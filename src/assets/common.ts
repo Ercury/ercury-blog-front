@@ -1,81 +1,82 @@
+import { DesktopOutlined, MailOutlined } from "@ant-design/icons-vue";
 export const menuList = [
     {
-        icon: "el-icon-lx-home",
+        icon: "DesktopOutlined",
         index: "/dashboard",
-        title: "系统首页",
+        title: "menu.homepage",
     },
     {
-        icon: "el-icon-lx-cascades",
+        icon: "MailOutlined",
         index: "/table",
-        title: "基础表格",
+        title: "menu.table",
     },
     {
-        icon: "el-icon-lx-copy",
+        icon: "MailOutlined",
         index: "/tabs",
-        title: "tab选项卡",
+        title: "menu.tabs",
     },
     {
-        icon: "el-icon-lx-calendar",
+        icon: "MailOutlined",
         index: "3",
-        title: "表单相关",
+        title: "menu.formrelated",
         subs: [
             {
                 index: "/form",
-                title: "基本表单",
+                title: "menu.baseform",
             },
             {
                 index: "/upload",
-                title: "文件上传",
+                title: "menu.upload",
             },
             {
                 index: "4",
-                title: "三级菜单",
+                title: "menu.level3menu",
                 subs: [
                     {
                         index: "/editor",
-                        title: "富文本编辑器",
+                        title: "menu.edit",
                     },
                     {
                         index: "/markdown",
-                        title: "markdown编辑器",
+                        title: "menu.markdown",
                     },
                 ],
             },
         ],
     },
     {
-        icon: "el-icon-lx-emoji",
+        icon: "MailOutlined",
         index: "/icon",
-        title: "自定义图标",
+        title: "menu.diyicon",
     },
     {
-        icon: "el-icon-pie-chart",
+        icon: "MailOutlined",
         index: "/charts",
-        title: "schart图表",
+        title: "menu.schart",
     },
     {
-        icon: "el-icon-lx-global",
+        icon: "MailOutlined",
         index: "/i18n",
-        title: "国际化功能",
+        title: "menu.internationalization",
     },
     {
-        icon: "el-icon-lx-warn",
+        icon: "MailOutlined",
         index: "7",
-        title: "错误处理",
+        title: "menu.errorhandling",
         subs: [
             {
                 index: "/permission",
-                title: "权限测试",
+                title: "menu.permissionsetting",
             },
             {
                 index: "/404",
-                title: "404页面",
+                title: "menu.404page",
             },
         ],
     },
     {
-        icon: "el-icon-lx-redpacket_fill",
+        icon: "MailOutlined",
         index: "/donate",
-        title: "支持作者",
+        title: "menu.supportauthor",
     },
 ];

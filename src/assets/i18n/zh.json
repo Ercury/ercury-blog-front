@@ -1,0 +1,20 @@
+{
+    "menu": {
+        "homepage": "系统首页",
+        "table": "基础表格",
+        "tabs": "tab选项卡",
+        "formrelated": "表单相关",
+        "upload": "文件上传",
+        "baseform": "基本表单",
+        "level3menu": "三级菜单",
+        "edit": "富文本编辑器",
+        "markdown": "markdown编辑器",
+        "diyicon": "自定义图标",
+        "schart": "schart图表",
+        "internationalization": "国际化功能",
+        "errorhandling": "错误处理",
+        "permissionsetting": "权限设置",
+        "404page": "404页面",
+        "supportauthor": "支持作者"
+    }
+}

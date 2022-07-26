@@ -2,7 +2,10 @@ import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 /* 自动导入ui库,内置了很多流行库解析器(ElementPlus Ant Design Vue Vant ElementUI....) */
 import Components from 'unplugin-vue-components/vite';
+/* 实现vue函数的自动导入 */
+import AutoImport from 'unplugin-auto-import/vite';
 import { AntDesignVueResolver, ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import PurgeIcons from 'vite-plugin-purge-icons';
 import { resolve } from 'path';
 import * as _ from 'lodash';
 
@@ -10,13 +13,32 @@ import * as _ from 'lodash';
 export default defineConfig({
   plugins: [
     vue(),
+    AutoImport({
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
+        /\.md$/, // .md
+      ],
+      dts: true,
+      imports: ['vue', 'vue-router', 'pinia'],
+      resolvers: [AntDesignVueResolver()]
+    }),
     Components({
       //ui库解析器,也可以自定义
       resolvers: [
         AntDesignVueResolver(),
         ElementPlusResolver(),
       ]
-    })
+    }),
+    PurgeIcons({
+      /* PurgeIcons Options */
+      content: [
+        '**/*.html',
+        // '**/*.js',
+        '**/*.vue', // scan for .vue file as well
+      ],
+    }),
   ],
 
   css: {
