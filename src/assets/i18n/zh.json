@@ -1,8 +1,10 @@
 {
     "menu": {
-        "homepage": "系统首页",
-        "table": "基础表格",
-        "tabs": "tab选项卡",
+        "dashboard": "Dashboard",
+        "usermanage": "用户管理",
+        "article": "文章",
+        "article_list": "文章列表",
+        "write_article": "文章创作",
         "formrelated": "表单相关",
         "upload": "文件上传",
         "baseform": "基本表单",
@@ -16,5 +18,8 @@
         "permissionsetting": "权限设置",
         "404page": "404页面",
         "supportauthor": "支持作者"
+    },
+    "header": {
+        "language": "语言"
     }
 }

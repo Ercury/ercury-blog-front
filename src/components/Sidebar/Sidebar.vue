@@ -6,8 +6,8 @@ const { appContext } = getCurrentInstance() as ComponentInternalInstance;
 const sidebar = useSidebarStore();
 </script>
 <template>
-    <div class="layout-sider">
-        <a-menu mode="inline" theme="dark" :inline-collapsed="sidebar.collapse">
+    <a-layout-sider class="layout-sider" v-model:collapsed="sidebar.collapse" collapsible>
+        <a-menu mode="inline" theme="dark">
             <template v-for="item in menuList">
                 <template v-if="item.subs">
                     <a-sub-menu :key="item.index">
@@ -41,7 +41,7 @@ const sidebar = useSidebarStore();
             </template>
 
         </a-menu>
-    </div>
+    </a-layout-sider>
 </template>
 
 <style lang='less' scoped>

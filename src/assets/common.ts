@@ -1,67 +1,52 @@
-import { DesktopOutlined, MailOutlined } from "@ant-design/icons-vue";
 export const menuList = [
     {
-        icon: "DesktopOutlined",
+        icon: "DashboardOutlined",
         index: "/dashboard",
-        title: "menu.homepage",
+        title: "menu.dashboard",
     },
     {
-        icon: "MailOutlined",
-        index: "/table",
-        title: "menu.table",
+        icon: "UserOutlined",
+        index: "/user",
+        title: "menu.user_manage",
     },
     {
-        icon: "MailOutlined",
-        index: "/tabs",
-        title: "menu.tabs",
-    },
-    {
-        icon: "MailOutlined",
-        index: "3",
-        title: "menu.formrelated",
+        icon: "FileMarkdownOutlined",
+        index: "/article",
+        title: "menu.article",
         subs: [
             {
-                index: "/form",
-                title: "menu.baseform",
+                index: "/",
+                title: "menu.article_list"
             },
             {
-                index: "/upload",
-                title: "menu.upload",
+                index: '/',
+                title: "menu.write_article"
+            }
+        ]
+    },
+    {
+        icon: "TagsOutlined",
+        index: "/category_manage",
+        title: "menu.category_manage",
+        subs: [
+            {
+                index: "/category_manage",
+                title: "menu.category_mange"
             },
             {
-                index: "4",
-                title: "menu.level3menu",
-                subs: [
-                    {
-                        index: "/editor",
-                        title: "menu.edit",
-                    },
-                    {
-                        index: "/markdown",
-                        title: "menu.markdown",
-                    },
-                ],
-            },
-        ],
+                index: "/tags_mange",
+                title: "menu.tags_mange"
+            }
+        ]
     },
     {
-        icon: "MailOutlined",
-        index: "/icon",
-        title: "menu.diyicon",
+        icon: "MessageOutlined",
+        index: "/leave_word",
+        title: "menu.leave_word_manage",
     },
     {
-        icon: "MailOutlined",
-        index: "/charts",
-        title: "menu.schart",
-    },
-    {
-        icon: "MailOutlined",
-        index: "/i18n",
-        title: "menu.internationalization",
-    },
-    {
-        icon: "MailOutlined",
-        index: "7",
+        icon: "WarningOutlined",
+        index: "/error",
         title: "menu.errorhandling",
         subs: [
             {
@@ -71,6 +56,10 @@ export const menuList = [
             {
                 index: "/404",
                 title: "menu.404page",
+            },
+            {
+                index: "/403",
+                title: "menu.403page",
             },
         ],
     },

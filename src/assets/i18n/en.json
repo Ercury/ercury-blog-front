@@ -1,8 +1,8 @@
 {
     "menu": {
-        "homepage": "Home Page",
-        "table": "Base Form",
-        "tabs": "Tabs",
+        "dashboard": "Dashboard",
+        "usermanage": "User Management",
+        "article": "Article",
         "formrelated": "Form Related",
         "upload": "Upload",
         "baseform": "Base Form",
@@ -16,5 +16,10 @@
         "permissionsetting": "Permissions Setting",
         "404page": "404 Page",
         "supportauthor": "Support Author"
+    },
+
+    "header": {
+        "language": "Language"
     }
+   
 }
