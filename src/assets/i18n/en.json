@@ -1,25 +1,22 @@
 {
     "menu": {
         "dashboard": "Dashboard",
-        "usermanage": "User Management",
+        "user_manage": "User",
         "article": "Article",
-        "formrelated": "Form Related",
-        "upload": "Upload",
-        "baseform": "Base Form",
-        "level3menu": "Level 3 Menu",
-        "edit": "Edit",
-        "markdown": "Markdown Edit",
-        "diyicon": "Diy Icon",
-        "schart": "Schart",
-        "internationalization": "Internationalzation",
-        "errorhandling": "Error Hand",
-        "permissionsetting": "Permissions Setting",
-        "404page": "404 Page",
-        "supportauthor": "Support Author"
+        "article_list": "Article List",
+        "article_write": "Article Writing",
+        "category_manage": "Category",
+        "tags_manage": "Tags",
+        "leave_word_manage": "Message",
+        "error_page": "Abnormal Page",
+        "403page": "403",
+        "404page": "404",
+        "internationalization": "国际化功能",
+        "errorhandling": "错误处理",
+        "permission_setting": "Permission Setting",
+        "system_manage": "System Setting"
     },
-
     "header": {
         "language": "Language"
     }
-   
 }

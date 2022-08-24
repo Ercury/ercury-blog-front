@@ -19,6 +19,7 @@ declare module '@vue/runtime-core' {
     AppIcon: typeof import('./src/components/AppIcon.vue')['default']
     ASubMenu: typeof import('ant-design-vue/es')['SubMenu']
     Header: typeof import('./src/components/Header/Header.vue')['default']
+    Main: typeof import('./src/components/Main/Main.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./src/components/Sidebar/Sidebar.vue')['default']

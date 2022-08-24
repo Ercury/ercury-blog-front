@@ -1,6 +1,7 @@
 <script lang='ts' setup>
 import Sidebar from "@/components/Sidebar/Sidebar.vue";
 import Header from "@/components/Header/Header.vue";
+import Main from "@/components/Main/Main.vue";
 </script>
 
 <template>
@@ -8,9 +9,11 @@ import Header from "@/components/Header/Header.vue";
     <Header></Header>
     <a-layout>
       <Sidebar></Sidebar>
-      <a-layout-content class="layout-main">Content</a-layout-content>
+      <a-layout-content class="layout-main">
+        <Main></Main>
+      </a-layout-content>
     </a-layout>
-    <a-layout-footer class="layout-footer">Footer</a-layout-footer>
+    <!-- <a-layout-footer class="layout-footer">Footer</a-layout-footer> -->
   </a-layout>
 </template>
 
