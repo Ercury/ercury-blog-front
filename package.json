@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "ISC",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "build": "vite build"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
     "@types/node": "^18.0.6",
     "@vitejs/plugin-vue": "^3.0.1",
     "ant-design-vue": "^3.2.10",
+    "axios": "^0.27.2",
     "less": "^4.1.3",
     "pinia": "^2.0.16",
     "typescript": "^4.7.4",

@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import { defineAsyncComponent } from 'vue' // 引入defineAsyncComponent
 
 const modules: Record<string, {[key: string]: any}> =import.meta.glob('./module/*.ts', {eager: true});
 const allRoutes: Array<RouteRecordRaw> = [];
@@ -10,12 +11,10 @@ Object.keys(modules).forEach((key) => {
     allRoutes.push(...modList);
 });
 
-
-
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
-        redirect: '/dashboard'
+        redirect:'/login'
     }, 
     {
         path: '/',
@@ -28,7 +27,7 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/login',
         name: 'Login',
-        component: () => import('@/views/Login/index.vue')
+        component: () => import('@/pages/Login/Login.vue')
     },
 
 

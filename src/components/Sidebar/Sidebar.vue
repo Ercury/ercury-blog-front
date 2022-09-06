@@ -1,7 +1,7 @@
 <script lang='ts' setup='setup'>
-import { menuList } from '@/assets/menus';
+import { menuList } from '@/common/menus';
 import { ComponentInternalInstance, getCurrentInstance } from "vue";
-import { useSidebarStore } from '@/store/sidebar';
+import { useSidebarStore } from '@/store/module/userSidebarStore';
 import { useRoute } from 'vue-router';
 import { computed } from '@vue/reactivity';
 const { appContext } = getCurrentInstance() as ComponentInternalInstance;
@@ -59,9 +59,5 @@ const onRoutes = computed(() => {
 .layout-sider {
     width: 200px;
     height: 100%;
-}
-
-.icon {
-    // padding-right: 25px;
 }
 </style>

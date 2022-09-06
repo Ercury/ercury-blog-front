@@ -2,6 +2,10 @@ import type { RouteRecordRaw } from "vue-router";
 
 const menusRoute: Array<RouteRecordRaw> = [
     {
+        path: '/',
+        redirect:'dashboard'
+    },
+    {
         path: "dashboard",
         name: "dashboard",
         component: () => import('@/pages/Dashboard/Dashboard.vue')
@@ -25,12 +29,12 @@ const menusRoute: Array<RouteRecordRaw> = [
     {
         path: "categoryManage",
         name: "categoryManage",
-        component: () => import('@/pages/Category/CategoryManage.vue')
+        component: () => import('@/pages/Category/Category.vue')
     },
     {
         path: "tagsManage",
         name: "tagsManage",
-        component: () => import('@/pages/Category/TagsManage.vue')
+        component: () => import('@/pages/Category/Tag.vue')
     },
 
     {

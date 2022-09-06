@@ -18,7 +18,7 @@ export const menuList: Array<SidebarMenus> = [
     },
     {
         icon: "FileMarkdownOutlined",
-        routeName: "",
+        routeName: "article",
         title: "menu.article",
         subs: [
             {
@@ -33,7 +33,7 @@ export const menuList: Array<SidebarMenus> = [
     },
     {
         icon: "TagsOutlined",
-        routeName: "",
+        routeName: "category",
         title: "menu.category_manage",
         subs: [
             {
@@ -53,7 +53,7 @@ export const menuList: Array<SidebarMenus> = [
     },
     {
         icon: "WarningOutlined",
-        routeName: "",
+        routeName: "error",
         title: "menu.error_page",
         subs: [
             {

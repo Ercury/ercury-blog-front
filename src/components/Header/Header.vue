@@ -1,5 +1,5 @@
 <script lang='ts' setup='setup'>
-import { useSidebarStore } from '@/store/sidebar';
+import { useSidebarStore } from '@/store/module/userSidebarStore';
 import AppIcon from '@/components/AppIcon.vue';
 import { ComponentInternalInstance, getCurrentInstance } from "vue";
 const { appContext } = getCurrentInstance() as ComponentInternalInstance;

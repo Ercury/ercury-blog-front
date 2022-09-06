@@ -13,6 +13,8 @@
       "esModuleInterop": true,
       "lib": ["esnext", "dom"],
       "skipLibCheck": true,
+      // ts(2564) 忽略需要明确的设置类中属性需要初始化赋值或者构造方法
+      "strictPropertyInitialization": false,
       "baseUrl": ".",
       //别名配置
       "paths": {

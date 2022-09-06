@@ -13,7 +13,6 @@ import i18n from '@/assets/i18n'
 const app = createApp(App);
 setupStore(app); // 把创建出来的vue实例,传入setupStore函数进行挂载
 
-
 //开始使用全局Antd图标
 const icons: any = Icons;
 for (const key in icons) {
