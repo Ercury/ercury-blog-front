@@ -7,7 +7,7 @@ export interface HttpConfig {
     params?: {[key: string]: any}
 }
 
-const _http = (config: HttpConfig) => {
+const _http = (config: HttpConfig): Promise<any> => {
     return new Promise((resolve, reject) => {
         return requests({
             url: config.url,

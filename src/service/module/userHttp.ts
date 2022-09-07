@@ -9,7 +9,7 @@ export class UserRequests {
         return _http({
             url: this.LoginUrl,
             method: 'POST',
-            data: params
+            data: {...params}
         })
     }
 }

@@ -2,6 +2,7 @@ import { RESP_CODE } from "@/common/errorCode";
 import axios from "axios";
 import { KEY_USERINFO, UserInfo } from '../store/module/useUserStore';
 import router from '@/router/index';
+import Message from "@/common/message";
 
 // 创建axios实例
 const requests = axios.create({
@@ -20,18 +21,18 @@ requests.interceptors.request.use(config => {
 })
 
 /* 响应拦截器 */
-requests.interceptors.response.use(resp => {
-    const { code, msg } = resp.data || {};
-    if(code !== RESP_CODE.OK_CODE) {
-        return Promise.reject(msg);
-    }
-
-    if(code === RESP_CODE.NO_PERMISSIONS) {
+requests.interceptors.response.use(response => {
+    const { status, data } = response || {};
+    if(status === RESP_CODE.NO_PERMISSIONS) {
         router.push({name: 'Login'}).then();
-        return Promise.reject(msg);
+        Message({tipType: 'error', content: '没有操作权限'});
     }
-
-    return Promise.resolve(resp);
+    if(status !== RESP_CODE.OK_CODE) {
+        Message({tipType: 'error', content: '错误'});
+    }
+    return data;
+}, err => {
+    return Promise.reject(err.message);
 })
 
 export default requests;
