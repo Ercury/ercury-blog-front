@@ -26,8 +26,8 @@ const onRoutes = computed(() => {
                                 <a-sub-menu :key="subItem.routeName">
                                     <template #title>{{ $t(subItem.title) }}</template>
                                     <a-menu-item v-for="threeItem in subItem.subs" :key="threeItem.routeName">
-                                        <router-link :to="item.routeName">
-                                            {{ $t(item.title) }}
+                                        <router-link :to="threeItem.routeName">
+                                            {{ $t(threeItem.title) }}
                                         </router-link>
                                     </a-menu-item>
                                 </a-sub-menu>

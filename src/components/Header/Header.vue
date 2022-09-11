@@ -1,16 +1,25 @@
 <script lang='ts' setup='setup'>
 import { useSidebarStore } from '@/store/module/userSidebarStore';
 import AppIcon from '@/components/AppIcon.vue';
-import { ComponentInternalInstance, getCurrentInstance } from "vue";
+import { ComponentInternalInstance, getCurrentInstance, onMounted, reactive, ref } from "vue";
 import { useRouter } from 'vue-router';
 import useUserStore from '../../store/module/useUserStore';
 import Message from '@/common/message';
+import { KEY_USERINFO, UserInfo } from '../../store/module/useUserStore';
 const { appContext } = getCurrentInstance() as ComponentInternalInstance;
 const sidebar = useSidebarStore();
 
 const router = useRouter();
 
 const user = useUserStore();
+
+let userInfo = reactive(new UserInfo());
+
+onMounted(() => {
+     userInfo = JSON.parse(sessionStorage.getItem(KEY_USERINFO) as string);
+     console.log(userInfo);
+     
+})
 
 const collapseChage = () => {
     sidebar.handlecollapse();
@@ -21,7 +30,7 @@ const handleSelect = (value: any) => {
         case 'logout':
             router.push({ name: 'Login' });
             Message({tipType: 'success', content: '退出成功'});
-            user.$reset();
+            user.logout();
             break;
         case 'modifyPwd':
             break;
@@ -55,7 +64,7 @@ const handleSelect = (value: any) => {
             <!-- 头像 -->
             <div class="avatar">
                 <a-dropdown>
-                    <a-avatar size="large">
+                    <a-avatar size="large" src="https://img.paulzzh.com/touhou/random">
                         <template #icon>
                             <component class="icon"
                                 :is="appContext?.config.globalProperties.$antIcons['UserOutlined']" />
@@ -110,12 +119,11 @@ const handleSelect = (value: any) => {
             line-height: 70px;
 
             .collapse-btn-size {
-                font-size: x-largel;
+                font-size: 25px;
             }
         }
 
         .header-logo {
-            // width: calc(200px - 66px);
             width: 134px;
             background: url(./logo.png) no-repeat scroll top/cover;
             cursor: pointer;
