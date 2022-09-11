@@ -2,10 +2,33 @@
 import { useSidebarStore } from '@/store/module/userSidebarStore';
 import AppIcon from '@/components/AppIcon.vue';
 import { ComponentInternalInstance, getCurrentInstance } from "vue";
+import { useRouter } from 'vue-router';
+import useUserStore from '../../store/module/useUserStore';
+import Message from '@/common/message';
 const { appContext } = getCurrentInstance() as ComponentInternalInstance;
 const sidebar = useSidebarStore();
+
+const router = useRouter();
+
+const user = useUserStore();
+
 const collapseChage = () => {
     sidebar.handlecollapse();
+}
+
+const handleSelect = (value: any) => {
+    switch (value.key) {
+        case 'logout':
+            router.push({ name: 'Login' });
+            Message({tipType: 'success', content: '退出成功'});
+            user.$reset();
+            break;
+        case 'modifyPwd':
+            break;
+        default:
+            break;
+    }
+
 }
 </script>
 <template>
@@ -13,9 +36,9 @@ const collapseChage = () => {
         <div class="header-left">
             <!-- 折叠按钮 -->
             <div class="collapse-btn" @click="collapseChage">
-                <app-icon v-show="!sidebar.collapse" icon="ant-design:menu-fold-outlined" style="font-size:x-large;">
+                <app-icon v-show="!sidebar.collapse" icon="ant-design:menu-fold-outlined" class="collapse-btn-size">
                 </app-icon>
-                <app-icon v-show="sidebar.collapse" icon="ant-design:menu-unfold-outlined" style="font-size:x-large;">
+                <app-icon v-show="sidebar.collapse" icon="ant-design:menu-unfold-outlined" class="collapse-btn-size">
                 </app-icon>
             </div>
             <!-- logo  -->
@@ -26,7 +49,7 @@ const collapseChage = () => {
         <div class="header-right">
             <!-- 消息中心 -->
             <div class="btn-bell">
-                <app-icon icon="bx:bell" style="font-size:25px;position:absolute;top: 4px;"></app-icon>
+                <app-icon icon="bx:bell" class="bell-style"></app-icon>
                 <span class="btn-bell-badge"></span>
             </div>
             <!-- 头像 -->
@@ -34,20 +57,14 @@ const collapseChage = () => {
                 <a-dropdown>
                     <a-avatar size="large">
                         <template #icon>
-                            <component class="icon" :is="appContext?.config.globalProperties.$antIcons['UserOutlined']" />
+                            <component class="icon"
+                                :is="appContext?.config.globalProperties.$antIcons['UserOutlined']" />
                         </template>
                     </a-avatar>
                     <template #overlay>
-                        <a-menu>
-                            <a-menu-item>
-                                <a href="javascript:;">1st menu item</a>
-                            </a-menu-item>
-                            <a-menu-item>
-                                <a href="javascript:;">2nd menu item</a>
-                            </a-menu-item>
-                            <a-menu-item>
-                                <a href="javascript:;">3rd menu item</a>
-                            </a-menu-item>
+                        <a-menu @click="handleSelect">
+                            <a-menu-item key="modifyPwd">{{$t('header.modify_pwd')}}</a-menu-item>
+                            <a-menu-item key="logout">{{$t('header.logout')}}</a-menu-item>
                         </a-menu>
                     </template>
                 </a-dropdown>
@@ -56,16 +73,16 @@ const collapseChage = () => {
             <div class="language">
                 <a-dropdown>
                     <span class="outline">
-                    <span>{{$t('header.language')}}</span>
-                    <component class="icon" :is="appContext?.config.globalProperties.$antIcons['DownOutlined']" />
+                        <span>{{$t('header.language')}}</span>
+                        <component class="icon" :is="appContext?.config.globalProperties.$antIcons['DownOutlined']" />
                     </span>
                     <template #overlay>
                         <a-menu>
                             <a-menu-item>
-                                <a href="javascript:;">1st menu item</a>
+                                {{$t('header.zh')}}
                             </a-menu-item>
                             <a-menu-item>
-                                <a href="javascript:;">2nd menu item</a>
+                                {{$t('header.en')}}
                             </a-menu-item>
                         </a-menu>
                     </template>
@@ -91,6 +108,10 @@ const collapseChage = () => {
             padding: 0 21px;
             cursor: pointer;
             line-height: 70px;
+
+            .collapse-btn-size {
+                font-size: x-largel;
+            }
         }
 
         .header-logo {
@@ -115,6 +136,12 @@ const collapseChage = () => {
             height: inherit;
             line-height: 70px;
 
+            .bell-style {
+                font-size: 25px;
+                position: absolute;
+                top: 4px;
+            }
+
             .btn-bell-badge {
                 position: absolute;
                 top: 14px;
@@ -126,11 +153,11 @@ const collapseChage = () => {
             }
         }
 
-        .avatar {}
+        // .avatar {}
 
-        .language {
-            
-        }
+        // .language {
+
+        // }
     }
 }
 </style>

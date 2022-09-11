@@ -1,4 +1,4 @@
-import { RESP_CODE } from "@/common/errorCode";
+import { RESP_CODE } from "@/common/httpStatusCode";
 import axios from "axios";
 import { KEY_USERINFO, UserInfo } from '../store/module/useUserStore';
 import router from '@/router/index';
@@ -30,9 +30,34 @@ requests.interceptors.response.use(response => {
     if(status !== RESP_CODE.OK_CODE) {
         Message({tipType: 'error', content: '错误'});
     }
-    return data;
+    return Promise.resolve(data);
 }, err => {
-    return Promise.reject(err.message);
+    return Promise.reject(err.response.data);
 })
 
-export default requests;
+interface HttpConfig {
+    url: string;
+    method: string;
+    data?: {[key: string]: any};
+    params?: {[key: string]: any}
+}
+
+const _http = (config: HttpConfig): Promise<any> => {
+    return new Promise((resolve, reject) => {
+        return requests({
+            url: config.url,
+            method: config.method,
+            data: config.data,
+            params: config.params
+        })
+        .then(resp => {
+            resolve(resp);
+        })
+        .catch(err => {
+            reject(err);
+        })
+    })
+}
+
+
+export default _http;

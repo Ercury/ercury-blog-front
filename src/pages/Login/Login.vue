@@ -1,34 +1,35 @@
 <script lang='ts' setup='setup'>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import { LoginFormField } from '@/common/constant';
 import { FormRules } from '@/common/formRules';
 import { UserRequests } from "@/service/module/userHttp";
-import { RESP_CODE } from "@/common/errorCode";
+import { RESP_CODE } from "@/common/httpStatusCode";
+import { useRouter } from 'vue-router';
+import type { FormInstance } from 'ant-design-vue';
 import useUserStore from '@/store/module/useUserStore';
-import  Message  from '@/common/message';
+import Message from '@/common/message';
 const formState: LoginFormField = reactive(new LoginFormField());
 const userRequests = new UserRequests();
 const user = useUserStore();
+const router = useRouter();
+const formRef = ref<FormInstance | undefined>();
 
-// 提交表单数据验证成功回调
-const onFinish = (formField: LoginFormField): void => {
-    queryLogin(formField);
-}
-// 提交表单数据验证失败回调
-const onFinishFailed = (err: any): void => {
-    console.log(err);
-
+// 表单校验成功
+const onFinish = (): void => {
+    queryLogin(formState);
 }
 
 // 登录接口
-const queryLogin = (params: LoginFormField) => {
+const queryLogin = (params: LoginFormField): void => {
     userRequests.reqLogin(params).then(resp => {
-        if (resp.token) {
-            Message({tipType: 'success', content: '登录成功'});
-            // user.setLogin(resp.data)
+        const { data, code } = resp;
+        if (code === RESP_CODE.OK_CODE) {
+            Message({ tipType: 'success', content: '登录成功' });
+            user.setLogin(Object.assign({}, data, { token: resp.token }));
+            router.push({ name: 'Home' });
         }
     }).catch(err => {
-        Message({tipType: 'error', content: err});
+        Message({ tipType: 'error', content: err.msg });
     })
 }
 </script>
@@ -36,8 +37,14 @@ const queryLogin = (params: LoginFormField) => {
 <template>
     <div class="background-login">
         <div class="login-form">
-            <a-form :model="formState" name="basic" :labelCol="{ span: 5, pull: 2 }" :wrapperCol="{ span: 16 }"
-                class="label-color" autocomplete="off" @finish="onFinish" @finishFailed="onFinishFailed">
+            <a-form :model="formState"
+                    name="basic" 
+                    :labelCol="{ span: 5, pull: 2 }" 
+                    :wrapperCol="{ span: 16 }"
+                    class="label-color" 
+                    autocomplete="off" 
+                    ref="formRef" 
+                    @finish="onFinish">
                 <!-- username -->
                 <a-form-item :label="$t('form.login.user_name')" name="username"
                     :rules="FormRules.loginFormRules.username">
@@ -52,7 +59,6 @@ const queryLogin = (params: LoginFormField) => {
                 <!-- <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
                     <a-checkbox v-model:checked="formState.remember">{{$t('form.login.remember_me')}}</a-checkbox>
                 </a-form-item> -->
-
                 <a-form-item :wrapper-col="{ offset: 10, span: 10 }">
                     <a-button type="primary" html-type="submit">{{$t('common.submit')}}</a-button>
                 </a-form-item>

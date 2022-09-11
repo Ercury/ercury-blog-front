@@ -1,5 +1,5 @@
 import { LoginFormField } from "@/common/constant";
-import _http from '../http';
+import _http from '@/service/requests';
 
 export class UserRequests {
     private LoginUrl = '/login';

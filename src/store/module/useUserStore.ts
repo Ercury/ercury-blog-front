@@ -3,7 +3,6 @@ import { defineStore } from 'pinia';
 export interface UserInfo {
     username: string;
     email: string;
-    password: string;
     role: string;
     avatar: string;
     createTime: Date;
@@ -12,10 +11,9 @@ export interface UserInfo {
 }
 export const  KEY_USERINFO= 'userInfo';
 export const useUserStore = defineStore('userInfo', {
-    state: (): UserInfo => ({
+    state: (): Partial<UserInfo> => ({
         username: '',
         email: '',
-        password: '',
         role: '',
         avatar: '',
         createTime: new Date(),
@@ -34,6 +32,10 @@ export const useUserStore = defineStore('userInfo', {
         setStatus(status: number): void {
             this.status = status;
         },
+        logout(): void {
+            this.$reset();
+            sessionStorage.removeItem(KEY_USERINFO);
+        },
         setLogin(userInfo: Partial<UserInfo>): void {
             this.$state = {
                 ...this.$state,
@@ -48,11 +50,11 @@ const instance = useUserStore();
 
 //监测state变化
 instance.$subscribe((mutations, state) => {
-    sessionStorage.setItem('KEY_USERINFO', JSON.stringify(state));
+    sessionStorage.setItem(KEY_USERINFO, JSON.stringify(state));
 })
 
 //init
-const initUserInfo = sessionStorage.getItem('KEY_USERINFO');
+const initUserInfo = sessionStorage.getItem(KEY_USERINFO);
 if(initUserInfo) {
     instance.setLogin(JSON.parse(initUserInfo));
 }

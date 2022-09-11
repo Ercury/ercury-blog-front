@@ -17,7 +17,11 @@
         "system_manage": "System Setting"
     },
     "header": {
-        "language": "Language"
+        "language": "Language",
+        "modify_pwd": "修改密码",
+        "logout": "登出登录",
+        "zh": "中文",
+        "en": "英文"
     },
     "form":  {
         "login": {

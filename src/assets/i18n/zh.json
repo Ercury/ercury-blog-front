@@ -17,7 +17,11 @@
         "system_manage": "系统管理"
     },
     "header": {
-        "language": "语言"
+        "language": "语言",
+        "modify_pwd": "修改密码",
+        "logout": "登出登录",
+        "zh": "中文",
+        "en": "英文"
     },
     "form":  {
         "login": {
