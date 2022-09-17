@@ -1,14 +1,6 @@
+import { UserInfo } from '@/common/constant';
 import { defineStore } from 'pinia';
 
-export class UserInfo {
-    username: string;
-    email: string;
-    role: string;
-    avatar: string;
-    createTime: Date;
-    status: number;
-    token: string;
-}
 export const  KEY_USERINFO= 'userInfo';
 export const useUserStore = defineStore('userInfo', {
     state: (): Partial<UserInfo> => ({
@@ -58,6 +50,3 @@ const initUserInfo = sessionStorage.getItem(KEY_USERINFO);
 if(initUserInfo) {
     instance.setLogin(JSON.parse(initUserInfo));
 }
-
-
-export default useUserStore;

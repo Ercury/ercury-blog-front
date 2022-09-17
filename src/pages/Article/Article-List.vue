@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<router-view></router-view>
+Article-List
 </template>
 
 <style lang='less' scoped>

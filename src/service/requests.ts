@@ -1,6 +1,7 @@
 import { RESP_CODE } from "@/common/httpStatusCode";
 import axios from "axios";
-import { KEY_USERINFO, UserInfo } from '../store/module/useUserStore';
+import { KEY_USERINFO } from '../store/module/useUserStore';
+import { UserInfo } from '@/common/constant';
 import router from '@/router/index';
 import Message from "@/common/message";
 
@@ -43,20 +44,12 @@ interface HttpConfig {
 }
 
 const _http = (config: HttpConfig): Promise<any> => {
-    return new Promise((resolve, reject) => {
         return requests({
             url: config.url,
             method: config.method,
             data: config.data,
             params: config.params
         })
-        .then(resp => {
-            resolve(resp);
-        })
-        .catch(err => {
-            reject(err);
-        })
-    })
 }
 
 

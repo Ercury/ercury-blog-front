@@ -24,6 +24,6 @@
         "vite/client"
       ]
     },
-    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*"],
+    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*", "env.d.ts", "components.d.ts", "./auto-imports.d.ts"],
     "references": [{ "path": "./tsconfig.node.json" }]
   }

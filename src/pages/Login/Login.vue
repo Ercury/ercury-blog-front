@@ -6,11 +6,13 @@ import { UserRequests } from "@/service/module/userHttp";
 import { RESP_CODE } from "@/common/httpStatusCode";
 import { useRouter } from 'vue-router';
 import type { FormInstance } from 'ant-design-vue';
-import useUserStore from '@/store/module/useUserStore';
+import { useUserStore } from '@/store/module/useUserStore';
+import { usePermissionStore } from '../../store/module/usePermissionStore';
 import Message from '@/common/message';
 const formState: LoginFormField = reactive(new LoginFormField());
 const userRequests = new UserRequests();
-const user = useUserStore();
+const userStore = useUserStore();
+const permissionStore = usePermissionStore();
 const router = useRouter();
 const formRef = ref<FormInstance | undefined>();
 
@@ -21,12 +23,14 @@ const onFinish = (): void => {
 
 // 登录接口
 const queryLogin = (params: LoginFormField): void => {
-    userRequests.reqLogin(params).then(resp => {
+    userRequests.reqLogin(params).then(async resp => {
         const { data, code } = resp;
         if (code === RESP_CODE.OK_CODE) {
             Message({ tipType: 'success', content: '登录成功' });
-            user.setLogin(Object.assign({}, data, { token: resp.token }));
-            router.push({ name: 'Home' });
+            userStore.setLogin(Object.assign({}, data, { token: resp.token }));
+            await permissionStore.handleRoutes().then(() => {
+                router.push({name: 'Dashboard'});
+            });
         }
     }).catch(err => {
         Message({ tipType: 'error', content: err.msg });
@@ -37,14 +41,8 @@ const queryLogin = (params: LoginFormField): void => {
 <template>
     <div class="background-login">
         <div class="login-form">
-            <a-form :model="formState"
-                    name="basic" 
-                    :labelCol="{ span: 5, pull: 2 }" 
-                    :wrapperCol="{ span: 16 }"
-                    class="label-color" 
-                    autocomplete="off" 
-                    ref="formRef" 
-                    @finish="onFinish">
+            <a-form :model="formState" name="basic" :labelCol="{ span: 5, pull: 2 }" :wrapperCol="{ span: 16 }"
+                class="label-color" autocomplete="off" ref="formRef" @finish="onFinish">
                 <!-- username -->
                 <a-form-item :label="$t('form.login.user_name')" name="username"
                     :rules="FormRules.loginFormRules.username">

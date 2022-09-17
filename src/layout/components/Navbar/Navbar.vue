@@ -3,9 +3,10 @@ import { useSidebarStore } from '@/store/module/userSidebarStore';
 import AppIcon from '@/components/AppIcon.vue';
 import { ComponentInternalInstance, getCurrentInstance, onMounted, reactive, ref } from "vue";
 import { useRouter } from 'vue-router';
-import useUserStore from '../../store/module/useUserStore';
+import {useUserStore} from '@/store/module/useUserStore';
 import Message from '@/common/message';
-import { KEY_USERINFO, UserInfo } from '../../store/module/useUserStore';
+import { KEY_USERINFO} from '@/store/module/useUserStore';
+import  { UserInfo } from '@/common/constant';
 const { appContext } = getCurrentInstance() as ComponentInternalInstance;
 const sidebar = useSidebarStore();
 
@@ -18,15 +19,15 @@ let userInfo = reactive(new UserInfo());
 onMounted(() => {
      userInfo = JSON.parse(sessionStorage.getItem(KEY_USERINFO) as string);
      console.log(userInfo);
-     
 })
 
 const collapseChage = () => {
     sidebar.handlecollapse();
 }
 
-const handleSelect = (value: any) => {
-    switch (value.key) {
+const handleSelect = (menuItem: any) => {
+    console.log(menuItem);
+    switch (menuItem.key) {
         case 'logout':
             router.push({ name: 'Login' });
             Message({tipType: 'success', content: '退出成功'});
