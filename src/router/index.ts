@@ -1,4 +1,5 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import { useTagsViewStore } from "@/store/module/useTagsViewStore";
+import { createRouter, createWebHashHistory, RouteLocationNormalized, RouteRecordRaw, _RouteRecordBase } from "vue-router";
 const Layout = () => import("@/layout/index.vue");
 const modules: Record<string, {[key: string]: any}> =import.meta.glob('./module/*.ts', {eager: true});
 const allRoutes: Array<RouteRecordRaw> = [];
@@ -42,7 +43,7 @@ export const routes: Array<RouteRecordRaw> = [
       path: "/404",
       name: "NotFund",
       meta: { notNeedAuth: true, hidden: true },
-      component: () => import("@/pages/404.vue"),
+      component: () => import("@/pages/Abnormal/404.vue"),
     }
   ]
 
@@ -58,7 +59,7 @@ export const permissionRoutes: Array<RouteRecordRaw> = [
                 path: "dashboard",
                 name: "Dashboard",
                 meta: {
-                    title: "Dashboard",
+                    title: "menu.dashboard",
                     icon: "DashboardOutlined",
                     needCache: true,
                     fixd: true
@@ -99,6 +100,26 @@ router.beforeEach((to) => {
     if (!userInfo?.username || !userInfo?.token) {
       return { name: "Login" }
     }
+  }
+})
+
+// 路由后置守卫
+router.afterEach((to: RouteLocationNormalized): void => {
+  const tagsViewStore = useTagsViewStore()
+  // 添加路由缓存
+  if (to.name && to.meta && to.meta.needCache) {
+    tagsViewStore.addCacheView(to.name.toString())
+  }
+  const { name, path, meta, params, query } = to
+  // 添加访问过路由
+  if (to.meta && !to.meta.notNeedAuth) {
+    tagsViewStore.addVisitedView({
+      name,
+      path,
+      meta,
+      params,
+      query,
+    } as _RouteRecordBase)
   }
 })
 

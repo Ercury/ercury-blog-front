@@ -71,7 +71,6 @@ const queryLogin = (params: LoginFormField): void => {
     width: 100%;
     height: 100%;
     background: url(../../assets/images/02.jpg) no-repeat left center / cover;
-
     .login-form {
         position: absolute;
         top: 50%;
@@ -80,7 +79,6 @@ const queryLogin = (params: LoginFormField): void => {
         width: 400px;
 
     }
-
     .login-form :deep(.ant-form-item-required) {
         color: #ffff;
     }

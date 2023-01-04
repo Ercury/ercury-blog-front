@@ -1,20 +1,24 @@
 {
     "menu": {
         "dashboard": "Dashboard",
-        "user_manage": "User",
+        "account_center": "Account Center",
         "article": "Article",
         "article_list": "Article List",
         "article_write": "Article Writing",
-        "category_manage": "Category",
+        "category": "Category",
+        "category_edit": "Category Edit",
+        "category_list": "Category Edit",
         "tags_manage": "Tags",
-        "leave_word_manage": "Message",
         "error_page": "Abnormal Page",
         "403page": "403",
         "404page": "404",
         "internationalization": "国际化功能",
         "errorhandling": "错误处理",
-        "permission_setting": "Permission Setting",
-        "system_manage": "System Setting"
+        "permission": "Permission Setting",
+        "system_manage": "System Setting",
+        "user_info": "User Info",
+        "message": "Message Management",
+        "message_list": "Message List"
     },
     "header": {
         "language": "Language",

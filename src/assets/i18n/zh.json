@@ -1,20 +1,25 @@
 {
     "menu": {
         "dashboard": "Dashboard",
-        "usermanage": "用户管理",
+        "account_center": "用户中心",
         "article": "文章",
         "article_list": "文章列表",
         "article_write": "文章创作",
-        "category_manage": "分类管理",
+        "category": "分类管理",
+        "category_list": "分类列表",
+        "category_edit": "分类编辑",
         "tags_manage": "标签管理",
-        "leave_word_manage": "留言管理",
         "error_page": "异常页面",
         "403page": "403",
         "404page": "404",
         "internationalization": "国际化功能",
         "errorhandling": "错误处理",
-        "permission_setting": "权限设置",
-        "system_manage": "系统管理"
+        "permission": "权限管理",
+        "system": "系统管理",
+        "system_manage": "系统管理",
+        "user_info": "用户信息",
+        "message": "留言管理",
+        "message_list": "留言列表"
     },
     "header": {
         "language": "语言",

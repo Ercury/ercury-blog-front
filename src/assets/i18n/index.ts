@@ -25,7 +25,7 @@ const i18n = createI18n({
   legacy: false, // you must specify 'legacy: false' option
   // set locale
   // options: en | zh | es
-  locale: localStorage.getItem('language') || 'en',
+  locale: localStorage.getItem('language') || 'zh',
   // set locale messages
   messages
 })

@@ -2,14 +2,14 @@ const Layout = () => import("@/layout/index.vue")
 export default {
   path: "/user",
   name: "User",
-  meta: { title: "个人中心", icon: "UserOutlined", hidden: false },
+  meta: { title: "menu.account_center", icon: "UserOutlined", hidden: false },
   component: Layout,
   redirect: "/user/info",
   children: [
     {
       path: "info",
       name: "UserInfo",
-      meta: { title: "个人信息", hidden: false },
+      meta: { title: "menu.user_info", hidden: false },
       component: () => import("@/pages/User/User-Info.vue")
     },
   ],
