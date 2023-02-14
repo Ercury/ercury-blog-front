@@ -4,8 +4,9 @@
 
 <template>
 标签表单
+<slot></slot>
 </template>
 
-<style lang='less' scoped>
+<style lang='less' >
 
 </style>

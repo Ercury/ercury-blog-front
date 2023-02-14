@@ -4,12 +4,13 @@ import { BaseResp } from '@/types/responseData';
 import { UserInfo } from '@/common/constant';
 
 export class UserRequests {
-    private LoginUrl = '/login';
+    // 用户登录
+    private LOGIN_URL = '/login';
     
     // 登陆请求函数
     public reqLogin = (params: LoginFormField): Promise<BaseResp<UserInfo>> => {
         return _http({
-            url: this.LoginUrl,
+            url: this.LOGIN_URL,
             method: 'POST',
             data: {...params}
         })

@@ -3,6 +3,7 @@ import { useTagsViewStore } from '@/store/module/useTagsViewStore';
 import { Ref, VueElement, ref } from 'vue';
 import { RouteRecordName, _RouteRecordBase } from 'vue-router';
 import { useRoute, useRouter } from "vue-router"
+import { translate } from "@/assets/i18n/index"
 const router = useRouter();
 const route = useRoute();
 const tagsViewStore = useTagsViewStore();
@@ -51,7 +52,7 @@ const showMenu = (left: number, top: number) => {
     // 浏览器添加click关闭右键菜单
     window.addEventListener("click", hideMenu)
     visible.value = true;
-    if(menu.value) {
+    if (menu.value) {
         menu.value.style.left = `${left}px`;
         menu.value.style.top = `${top + 10}px`;
     }
@@ -59,7 +60,7 @@ const showMenu = (left: number, top: number) => {
 
 // 关闭右键菜单
 const hideMenu = () => {
-  visible.value = false
+    visible.value = false
 }
 
 const refresh = () => {
@@ -74,8 +75,8 @@ const close = () => {
 const closeOther = () => {
     tagsViewStore.deleteOtherVisitedView(mouseRightView.value);
     // 如果右键路由不是当前路由路径,路由跳转到右键路由
-    if(mouseRightView.value.name !== route.name) {
-        router.push({name: mouseRightView.value.name});
+    if (mouseRightView.value.name !== route.name) {
+        router.push({ name: mouseRightView.value.name });
     }
 }
 
@@ -86,35 +87,32 @@ const closeAll = async () => {
 </script>
 
 <template>
-<div class="visited_views">
-    <template v-for="view in visitedViews" :key="view.name">
-        <div @click="goTargetView(view)"
-             @contextmenu.prevent="mouseRightClick(view, $event)">
-            {{ $t(view.meta?.title) }}
-        <icon :style="{fontSize: '14px'}" @click.stop="delTargetVisited(view.name)">
-            <close-outlined />
-        </icon>
-        </div>
-    </template>
-        <ul
-            v-show="visible"
-            ref="menu"
-            class="menu">
+    <div class="visited_views">
+        <template v-for="view in visitedViews" :key="view.name">
+            <div @click="goTargetView(view)" @contextmenu.prevent="mouseRightClick(view, $event)">
+                {{ translate(view.meta.title) }}
+                <el-icon :style="{ fontSize: '14px' }" @click.stop="delTargetVisited(view.name)">
+                    <Close/>
+                </el-icon>
+            </div>
+        </template>
+        <ul v-show="visible" ref="menu" class="menu">
             <li @click="refresh">刷新</li>
             <li v-if="mouseRightView.meta && !mouseRightView.meta.fixed" @click="close">
-            关闭
+                关闭
             </li>
             <li @click="closeOther">关闭其他</li>
             <li @click="closeAll">关闭所有</li>
         </ul>
-</div>
+    </div>
 </template>
 
 <style lang='less' scoped>
 .visited_views {
+
     // height: 30px;
     // background-color: green;
-    > div {
+    >div {
         height: 24px;
         margin-top: 10px;
         margin-right: 5px;
@@ -127,19 +125,21 @@ const closeAll = async () => {
     }
 
     .menu {
-    width: 100px;
-    padding: 5px 10px;
-    position: absolute;
-    z-index: 9999;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    list-style: none;
-    > li {
-      padding: 5px 2px;
-      &:hover {
-        color: #3477f2;
-        cursor: pointer;
-      }
+        width: 100px;
+        padding: 5px 10px;
+        position: absolute;
+        z-index: 9999;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+        list-style: none;
+
+        >li {
+            padding: 5px 2px;
+
+            &:hover {
+                color: #3477f2;
+                cursor: pointer;
+            }
+        }
     }
-  }
 }
 </style>

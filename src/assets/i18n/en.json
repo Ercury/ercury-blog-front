@@ -39,6 +39,10 @@
     },
     "tips": {
         "valid_username_notnull": "Please input your username!",
-        "valid_password_notnull": "Please input your password!"
+        "valid_password_notnull": "Please input your password!",
+        "valid_articletitle": "Please enter the title of the article"
+    },
+    "button": {
+        "add_article": "New article"
     }
 }

@@ -1,5 +1,6 @@
 <script lang='ts' setup='setup'>
 import { ComponentInternalInstance, getCurrentInstance } from "vue";
+import { translate } from "@/assets/i18n/index"
 const { appContext } = getCurrentInstance() as ComponentInternalInstance;
 defineProps({
     item: {
@@ -21,29 +22,32 @@ const hasOnlyOneChild = (item: Record<string, any>) => {
                     :item="Object.assign({}, {...item.children[0], meta: {...item.meta, ...item.children[0].meta}})">
                 </SideItem>
             </template>
-            <a-sub-menu v-else :key="item.name">
+            <el-sub-menu v-else :index="item.name">
                 <template #title>
                     <template v-if="item.meta && item.meta.icon">
-                        <component class="icon" :is="appContext?.config.globalProperties.$antIcons[item.meta.icon]" />
+                        <component class="icon" :is="appContext?.config.globalProperties.$elIcons[item.meta.icon]" />
                     </template>
-                    <span>{{ $t(item.meta.title) }}</span>
+                    <span>{{ translate(item.meta.title) }}</span>
                 </template>
                 <template v-for="child in item.children" :key="child.name">
                     <SideItem :item="child"></SideItem>
                 </template>
-            </a-sub-menu>
+            </el-sub-menu>
         </template>
-        <a-menu-item v-else :key="item.name" v-if="item.name">
-            <router-link :to="{name: item.name }">
+        <el-menu-item v-else :index="item.name" v-if="item.name">
                 <template v-if="item.meta && item.meta.icon">
-                    <component class="icon" :is="appContext?.config.globalProperties.$antIcons[item.meta.icon]" />
+                    <component class="icon" :is="appContext?.config.globalProperties.$elIcons[item.meta.icon]" />
                 </template>
-                <span>{{ $t(item.meta.title) }}</span>
-            </router-link>
-        </a-menu-item>
+                <span>{{ translate(item.meta.title) }}</span>
+        </el-menu-item>
     </template>
 </template>
 
 <style lang='less' scoped>
-
+.icon {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
 </style>

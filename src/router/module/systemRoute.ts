@@ -1,8 +1,8 @@
-const Layout = () => import("@/layout/index.vue")
+const Layout = () => import("@/layout/index.vue");
 export default {
   path: "/system",
   name: "System",
-  meta: { title: "menu.system", icon: "SettingOutlined", hidden: false },
+  meta: { title: "menu.system", icon: "Setting", hidden: false },
   component: Layout,
   redirect: "/system/systemManage",
   children: [

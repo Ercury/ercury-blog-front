@@ -1,28 +1,29 @@
 export class TableColumns {
     public static ARTICLE_COLUMNS = [
         {
-            name: 'Name',
-            dataIndex: 'name',
-            key: 'name',
+            title: 'Title',
+            dataIndex: 'title',
+            key: 'title'
         },
         {
-            title: 'Age',
-            dataIndex: 'age',
-            key: 'age',
+            title: 'Category',
+            dataIndex: 'category',
+            key: 'category'
         },
         {
-            title: 'Address',
-            dataIndex: 'address',
-            key: 'address',
+            title: 'Tag',
+            dataIndex: 'tag',
+            key: 'tag'
         },
         {
-            title: 'Tags',
-            key: 'tags',
-            dataIndex: 'tags',
+            title: 'CreateTime',
+            dataIndex: 'createTime',
+            key: 'createTime'
         },
         {
-            title: 'Action',
-            key: 'action',
+            title: 'Content',
+            dataIndex: 'content',
+            key: 'content'
         },
     ];
 }

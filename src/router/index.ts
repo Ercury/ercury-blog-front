@@ -1,6 +1,6 @@
 import { useTagsViewStore } from "@/store/module/useTagsViewStore";
 import { createRouter, createWebHashHistory, RouteLocationNormalized, RouteRecordRaw, _RouteRecordBase } from "vue-router";
-const Layout = () => import("@/layout/index.vue");
+import Layout from "@/layout/index.vue";
 const modules: Record<string, {[key: string]: any}> =import.meta.glob('./module/*.ts', {eager: true});
 const allRoutes: Array<RouteRecordRaw> = [];
 
@@ -60,7 +60,7 @@ export const permissionRoutes: Array<RouteRecordRaw> = [
                 name: "Dashboard",
                 meta: {
                     title: "menu.dashboard",
-                    icon: "DashboardOutlined",
+                    icon: "PieChart",
                     needCache: true,
                     fixd: true
                 },

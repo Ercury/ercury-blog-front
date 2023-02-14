@@ -40,6 +40,10 @@
     },
     "tips": {
         "valid_username_notnull": "请输入用户名!",
-        "valid_password_notnull": "请输入密码!"
+        "valid_password_notnull": "请输入密码!",
+        "valid_articletitle": "文章标题不能为空"
+    },
+    "button": {
+        "add_article": "新增文章"
     }
 }

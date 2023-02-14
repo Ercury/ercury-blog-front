@@ -1,8 +1,8 @@
-const Layout = () => import("@/layout/index.vue")
+const Layout = () => import("@/layout/index.vue");
 export default {
   path: "/article",
   name: "Article",
-  meta: { title: "menu.article", icon: "FileMarkdownOutlined",  hidden: false },
+  meta: { title: "menu.article", icon: "Document",  hidden: false },
   component: Layout,
   redirect: "/article/list",
   children: [
@@ -10,13 +10,13 @@ export default {
       path: "list",
       name: "articleList",
       meta: { title: "menu.article_list", hidden: false },
-      component: () => import("@/pages/Article/Article-List.vue"),
+      component: () => import("@/pages/Article/ArticleList.vue"),
     },
     {
       path: "write",
       name: "articleWrite",
       meta: { title: "menu.article_write", hidden: false },
-      component: () => import("@/pages/Article/Article-Write.vue"),
+      component: () => import("@/pages/Article/ArticleWrite.vue"),
     },
   ],
 }

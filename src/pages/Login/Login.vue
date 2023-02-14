@@ -5,7 +5,7 @@ import { FormRules } from '@/common/formRules';
 import { UserRequests } from "@/service/module/userHttp";
 import { RESP_CODE } from "@/common/httpStatusCode";
 import { useRouter } from 'vue-router';
-import type { FormInstance } from 'ant-design-vue';
+import type { FormInstance } from 'element-plus';
 import { useUserStore } from '@/store/module/useUserStore';
 import { usePermissionStore } from '../../store/module/usePermissionStore';
 import Message from '@/common/message';
@@ -16,9 +16,15 @@ const permissionStore = usePermissionStore();
 const router = useRouter();
 const formRef = ref<FormInstance | undefined>();
 
-// 表单校验成功
-const onFinish = (): void => {
-    queryLogin(formState);
+// 提交回调
+function submitForm(formEl: FormInstance | undefined) {
+    if (!formEl) return
+    // 表单校验
+    formEl.validate((valid) => {
+        if (valid) {
+            queryLogin(formState);
+        } 
+    })
 }
 
 // 登录接口
@@ -29,7 +35,7 @@ const queryLogin = (params: LoginFormField): void => {
             Message({ tipType: 'success', content: '登录成功' });
             userStore.setLogin(Object.assign({}, data, { token: resp.token }));
             await permissionStore.handleRoutes().then(() => {
-                router.push({name: 'Dashboard'});
+                router.push({ name: 'Dashboard' });
             });
         }
     }).catch(err => {
@@ -41,26 +47,25 @@ const queryLogin = (params: LoginFormField): void => {
 <template>
     <div class="background-login">
         <div class="login-form">
-            <a-form :model="formState" name="basic" :labelCol="{ span: 5, pull: 2 }" :wrapperCol="{ span: 16 }"
-                class="label-color" autocomplete="off" ref="formRef" @finish="onFinish">
+            <el-form :model="formState" name="basic" label-width="120px" @submit.native.prevent class="label-color demo-dynamic"
+                autocomplete="off" ref="formRef" :rules="FormRules.LOGIN_FORM_RULES">
                 <!-- username -->
-                <a-form-item :label="$t('form.login.user_name')" name="username"
-                    :rules="FormRules.loginFormRules.username">
+                <el-form-item :label="translate('form.login.user_name')" prop="username">
                     <a-input v-model:value="formState.username" />
-                </a-form-item>
+                </el-form-item>
                 <!-- password -->
-                <a-form-item :label="$t('form.login.password')" name="password"
-                    :rules="FormRules.loginFormRules.password">
+                <el-form-item :label="translate('form.login.password')" prop="password">
                     <a-input-password v-model:value="formState.password" />
-                </a-form-item>
+                </el-form-item>
                 <!-- remember -->
                 <!-- <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
-                    <a-checkbox v-model:checked="formState.remember">{{$t('form.login.remember_me')}}</a-checkbox>
+                    <a-checkbox v-model:checked="formState.remember">{{translate('form.login.remember_me')}}</a-checkbox>
                 </a-form-item> -->
-                <a-form-item :wrapper-col="{ offset: 10, span: 10 }">
-                    <a-button type="primary" html-type="submit">{{$t('common.submit')}}</a-button>
-                </a-form-item>
-            </a-form>
+                <el-form-item>
+                    <el-button class="submit-btn" type="primary" native-type="submit"
+                        @click="submitForm(formRef)">{{ translate('common.submit') }}</el-button>
+                </el-form-item>
+            </el-form>
         </div>
     </div>
 </template>
@@ -71,6 +76,7 @@ const queryLogin = (params: LoginFormField): void => {
     width: 100%;
     height: 100%;
     background: url(../../assets/images/02.jpg) no-repeat left center / cover;
+
     .login-form {
         position: absolute;
         top: 50%;
@@ -78,9 +84,10 @@ const queryLogin = (params: LoginFormField): void => {
         transform: translate(-50%, -50%);
         width: 400px;
 
-    }
-    .login-form :deep(.ant-form-item-required) {
-        color: #ffff;
+        .submit-btn {
+            margin-left: 100px;
+        }
+
     }
 }
 </style>

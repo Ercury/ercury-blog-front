@@ -1,5 +1,9 @@
 import { UserInfo } from '@/common/constant';
 import { defineStore } from 'pinia';
+import store from '../index'
+import { createApp } from 'vue'
+import App from "../../App.vue";
+
 
 export const  KEY_USERINFO= 'userInfo';
 export const useUserStore = defineStore('userInfo', {
@@ -38,7 +42,9 @@ export const useUserStore = defineStore('userInfo', {
 })
 
 //创建userStore实例
+createApp(App).use(store);
 const instance = useUserStore();
+
 
 //监测state变化
 instance.$subscribe((mutations, state) => {

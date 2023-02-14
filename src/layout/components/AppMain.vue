@@ -4,21 +4,31 @@ import Sidebar from "@/layout/components/Sidebar/Sidebar.vue";
 </script>
     
 <template>
-    <a-layout class="layout">
-        <Navbar></Navbar>
-        <a-layout>
+    <el-container class="layout">
+        <el-header>
+            <Navbar></Navbar>
+        </el-header>
+        <el-container>
             <Sidebar></Sidebar>
-                <a-layout-content>
-                    <router-view>
-                    </router-view>
-                </a-layout-content>
-        </a-layout>
-    </a-layout>
+            <el-main>
+                <router-view>
+                </router-view>
+            </el-main>
+        </el-container>
+    </el-container>
 </template>
 
 <style lang='less' scoped>
 .layout {
     width: 100%;
     height: 100%;
+    :deep(.el-header) {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        box-shadow: 0px 2px 8px #000000a6 !important;
+        z-index: 2020 !important; // 两个盒子贴一起看不到阴影效果
+    }
 }
 </style>

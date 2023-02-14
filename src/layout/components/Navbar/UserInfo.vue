@@ -1,19 +1,40 @@
 <script lang='ts' setup='setup'>
 import AppIcon from '@/components/AppIcon.vue';
-import { ComponentInternalInstance, getCurrentInstance, onMounted, reactive, Ref, ref} from "vue";
+import { ComponentInternalInstance, getCurrentInstance, onMounted, reactive, Ref, ref } from "vue";
 import { useRouter } from 'vue-router';
 import { useUserStore } from '@/store/module/useUserStore';
 import Message from '@/common/message';
 import { KEY_USERINFO } from '@/store/module/useUserStore';
 import { UserInfo } from '@/common/constant';
+import { translate } from "@/assets/i18n/index"
 import { useI18n } from 'vue-i18n'
 const { locale } = useI18n();
 const router = useRouter();
 const userStore = useUserStore();
 const { appContext } = getCurrentInstance() as ComponentInternalInstance;
 const languageToggle: Ref<boolean> = ref(true);
-const handleSelect = (menuItem: any) => {
-    switch (menuItem.key) {
+
+// dropdown组件
+const dropDown = ref();
+
+let userInfo = reactive(new UserInfo());
+onMounted(() => {
+    userInfo = JSON.parse(sessionStorage.getItem(KEY_USERINFO) as string);
+})
+
+// 切换语言
+const changeLocale = (check: string | number | boolean): void => {
+    if (check) {
+        locale.value = 'zh';
+    } else {
+        locale.value = 'en';
+    }
+    localStorage.setItem('language', locale.value);
+}
+
+// 下拉选中回调
+const handleCommand = (command: string | number | object) => {
+    switch (command) {
         case 'logout':
             router.push({ name: 'Login' });
             Message({ tipType: 'success', content: '退出成功' });
@@ -24,26 +45,6 @@ const handleSelect = (menuItem: any) => {
         default:
             break;
     }
-}
-let userInfo = reactive(new UserInfo());
-onMounted(() => {
-    userInfo = JSON.parse(sessionStorage.getItem(KEY_USERINFO) as string);
-})
-
-// 切换语言
-const changeLocale = (check: boolean): void => {
-   if(check) {
-    locale.value = 'zh';
-   } else {
-    locale.value = 'en';
-    const body =  document.querySelector('#app');
-    console.log(body);
-    
-    if (body) {
-        body.style.backgroundColor = 'black';
-    }
-   }
-   localStorage.setItem('language', locale.value);
 }
 
 </script>
@@ -57,23 +58,24 @@ const changeLocale = (check: boolean): void => {
         </div>
         <!-- 语言 -->
         <div class="language">
-            <a-switch v-model:checked="languageToggle" checked-children="中文" un-checked-children="英文" @change='changeLocale'/>
+            <el-switch v-model="languageToggle" inline-prompt active-text="中文" inactive-text="中文"
+                @change='changeLocale' />
         </div>
         <!-- 头像 -->
         <div class="avatar">
-            <a-dropdown>
-                <a-avatar size="large" src="https://img.paulzzh.com/touhou/random">
+            <el-dropdown ref="dropDown" trigger="click" @command="handleCommand">
+                <el-avatar size="large" src="https://img.paulzzh.com/touhou/random">
                     <template #icon>
-                        <component class="icon" :is="appContext?.config.globalProperties.$antIcons['UserOutlined']" />
+                        <component class="icon" :is="appContext?.config.globalProperties.$elIcons['UserFilled']" />
                     </template>
-                </a-avatar>
-                <template #overlay>
-                    <a-menu @click="handleSelect">
-                        <a-menu-item key="modifyPwd">{{$t('header.modify_pwd')}}</a-menu-item>
-                        <a-menu-item key="logout">{{$t('header.logout')}}</a-menu-item>
-                    </a-menu>
+                </el-avatar>
+                <template #dropdown>
+                    <el-dropdown-menu>
+                        <el-dropdown-item command="modifyPwd">{{ translate('header.modify_pwd') }}</el-dropdown-item>
+                        <el-dropdown-item command="logout">{{ translate('header.logout') }}</el-dropdown-item>
+                    </el-dropdown-menu>
                 </template>
-            </a-dropdown>
+            </el-dropdown>
         </div>
     </div>
 </template>

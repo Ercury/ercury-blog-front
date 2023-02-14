@@ -1,8 +1,8 @@
-const Layout = () => import("@/layout/index.vue")
+const Layout = () => import("@/layout/index.vue");
 export default {
   path: "/message",
   name: "Message",
-  meta: { title: "menu.message", icon: "MessageOutlined",  hidden: false },
+  meta: { title: "menu.message", icon: "Message",  hidden: false },
   component: Layout,
   redirect: "/message/list",
   children: [

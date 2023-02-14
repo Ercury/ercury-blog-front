@@ -27,7 +27,6 @@ const collapseChage = () => {
     display: flex;
     width: 200px;
     .collapse-btn {
-        padding: 0 21px;
         cursor: pointer;
         line-height: 70px;
         .collapse-btn-size {

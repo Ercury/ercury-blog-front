@@ -4,6 +4,16 @@ export class LoginFormField {
     password: string;
 }
 
+// 添加文章入参
+export class AddArticleField {
+    title: string;
+    category: string;
+    tag: string;
+    desc: string;
+    cover: string;
+    fileList: [];
+}
+
 // 用户信息
 export class UserInfo {
     username: string;
@@ -13,4 +23,22 @@ export class UserInfo {
     createTime: Date;
     status: number;
     token: string;
+}
+
+// 分页查询列表参数
+export class GeListField {
+    pageNo: number;
+    pageSize: number;
+}
+
+// 
+
+// 文章返回字段
+export class ArticleListData {
+    title: string;
+    content: string;
+    category: string;
+    tag: string;
+    createTime: Date;
+    modifyTime: Date;
 }

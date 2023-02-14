@@ -1,8 +1,8 @@
-const Layout = () => import("@/layout/index.vue")
+const Layout = () => import("@/layout/index.vue");
 export default {
   path: "/user",
   name: "User",
-  meta: { title: "menu.account_center", icon: "UserOutlined", hidden: false },
+  meta: { title: "menu.account_center", icon: "User", hidden: false },
   component: Layout,
   redirect: "/user/info",
   children: [
@@ -10,7 +10,7 @@ export default {
       path: "info",
       name: "UserInfo",
       meta: { title: "menu.user_info", hidden: false },
-      component: () => import("@/pages/User/User-Info.vue")
+      component: () => import("@/pages/User/UserInfo.vue")
     },
   ],
 }

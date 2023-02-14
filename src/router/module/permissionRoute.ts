@@ -1,8 +1,8 @@
-const Layout = () => import("@/layout/index.vue")
+const Layout = () => import("@/layout/index.vue");
 export default {
   path: "/permission",
   name: "Permission",
-  meta: { title: "menu.permission", icon: "IdcardOutlined", hidden: false },
+  meta: { title: "menu.permission", icon: "Lock", hidden: false },
   component: Layout,
   redirect: "/permission/403",
   children: [
