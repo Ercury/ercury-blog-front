@@ -11,8 +11,7 @@ import Sidebar from "@/layout/components/Sidebar/Sidebar.vue";
         <el-container>
             <Sidebar></Sidebar>
             <el-main>
-                <router-view>
-                </router-view>
+                <router-view />
             </el-main>
         </el-container>
     </el-container>
@@ -25,10 +24,14 @@ import Sidebar from "@/layout/components/Sidebar/Sidebar.vue";
     :deep(.el-header) {
         width: 100%;
         height: 70px;
+        background-color: @dark-theme;
         display: flex;
         justify-content: space-between;
         box-shadow: 0px 2px 8px #000000a6 !important;
         z-index: 2020 !important; // 两个盒子贴一起看不到阴影效果
+    }
+    :deep(.el-main) {
+        background-color: @dark-theme;
     }
 }
 </style>

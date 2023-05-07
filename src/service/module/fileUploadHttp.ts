@@ -1,14 +1,15 @@
 import _http from '@/service/requests';
-export class FileUploadRequest {
+export class FileUploadApi {
   // 文件上传
-  public FILE_UPLOAD = '/fileUpload';
+  public FILE_UPLOAD = '/upload';
 
   // 文件上传请求函数
-  public fileUpload = (params: any): Promise<any> => {
+  public upload = (params: any): Promise<any> => {
     return _http({
       url:  this.FILE_UPLOAD,
       method: 'POST',
-      params
+      data: params,
+      headers: { 'Content-type': 'multipart/form-data;' }
     })
   }
 }

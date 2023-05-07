@@ -17,5 +17,6 @@ import VisitedViews from './VisitedViews.vue';
 .header-center {
     flex-grow: 1;
     overflow-y: hidden;
+    background-color: @dark-theme;
 }
 </style>

@@ -1,29 +1,69 @@
 export class TableColumns {
+    // 文章列表表头
     public static ARTICLE_COLUMNS = [
         {
             title: 'Title',
-            dataIndex: 'title',
-            key: 'title'
+            key: 'title',
+            type: 'text'
         },
         {
             title: 'Category',
-            dataIndex: 'category',
-            key: 'category'
+            key: 'category',
+            type: 'select',
+            options: <any>[],
+            select: 'categorySelect'
         },
         {
-            title: 'Tag',
-            dataIndex: 'tag',
-            key: 'tag'
+            title: 'Tags',
+            key: 'tags',
+            type: 'select',
+            options: <any>[],
+            select: 'tagSelect'
         },
         {
-            title: 'CreateTime',
-            dataIndex: 'createTime',
+            title: 'Description',
+            key: 'description',
+            type: 'text'
+        },
+        {
+            title: 'Status',
+            key: 'status',
+            type: 'select',
+            options: <any>[],
+            select: 'status'
+        },
+        {
+            title: 'createTime',
             key: 'createTime'
         },
         {
-            title: 'Content',
-            dataIndex: 'content',
-            key: 'content'
+            title: 'operation',
+            key: 'operation'
         },
     ];
+
+    // 分类表头
+    public static CATEGORY_COLUMNS = [
+        {
+            title: 'Name',
+            key: 'categoryName'
+        },
+        {
+            title: 'ID',
+            key: '_id'
+        }
+    ]
+
+    // 操作按钮
+    public static OPERATION_BUTTONS = [
+        {label: '编辑', key: 'edit', color: '#626aef', status: 0},
+        {label: '删除', key: 'delete', color: '#FF4D00', status: 0},
+        {label: '保存', key: 'save', color: '#00BFFF', status: 1},
+        {label: '取消', key: 'cancel', color: '', status: 1},
+    ]
+
+
 }
+
+// 文章状态
+export const ARTICLE_STATUS = new Map([[0, '草稿'], [1, '已发布']]);

@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 // 导入element-plus图标库
 import * as Icons from '@element-plus/icons-vue';
+// 暗黑模式样式
+import 'element-plus/theme-chalk/dark/css-vars.css'
 //引入iconify文件
 import '@purge-icons/generated';
 // 引入全局样式
@@ -12,6 +14,7 @@ import router from './router';
 import store from './store/index';
 import refreshHandleRoute from './utils/refreshHandleRoute';
 const app = createApp(App);
+
 
 //开始使用全局elememt图标
 const icons: any = Icons;

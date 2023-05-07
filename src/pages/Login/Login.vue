@@ -9,6 +9,7 @@ import type { FormInstance } from 'element-plus';
 import { useUserStore } from '@/store/module/useUserStore';
 import { usePermissionStore } from '../../store/module/usePermissionStore';
 import Message from '@/common/message';
+import { translate } from '@/assets/i18n';
 const formState: LoginFormField = reactive(new LoginFormField());
 const userRequests = new UserRequests();
 const userStore = useUserStore();
@@ -31,7 +32,7 @@ function submitForm(formEl: FormInstance | undefined) {
 const queryLogin = (params: LoginFormField): void => {
     userRequests.reqLogin(params).then(async resp => {
         const { data, code } = resp;
-        if (code === RESP_CODE.OK_CODE) {
+        if (code === RESP_CODE.SUCCESS_CODE) {
             Message({ tipType: 'success', content: '登录成功' });
             userStore.setLogin(Object.assign({}, data, { token: resp.token }));
             await permissionStore.handleRoutes().then(() => {
@@ -51,11 +52,11 @@ const queryLogin = (params: LoginFormField): void => {
                 autocomplete="off" ref="formRef" :rules="FormRules.LOGIN_FORM_RULES">
                 <!-- username -->
                 <el-form-item :label="translate('form.login.user_name')" prop="username">
-                    <a-input v-model:value="formState.username" />
+                    <el-input type="text" v-model="formState.username"/>
                 </el-form-item>
                 <!-- password -->
                 <el-form-item :label="translate('form.login.password')" prop="password">
-                    <a-input-password v-model:value="formState.password" />
+                    <el-input type="password" v-model="formState.password"/>
                 </el-form-item>
                 <!-- remember -->
                 <!-- <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">

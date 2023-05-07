@@ -6,7 +6,7 @@ const titleList = computed(() => useRoute().matched)
 </script>
 
 <template>
-    <div :separator-icon="ArrowRight">
+    <div :separator-icon="ArrowRight" class="breadcrumd-style">
         <el-breadcrumb separator=">">
             <el-breadcrumb-item class="border-style" v-for="item in titleList" :key="item.path">
                 <template v-if="item.meta && item.meta.title">
@@ -20,5 +20,6 @@ const titleList = computed(() => useRoute().matched)
 .breadcrumd-style {
     width: 100%;
     height: 30%;
+    margin-top: 5px;
 }
 </style>

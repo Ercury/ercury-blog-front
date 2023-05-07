@@ -28,7 +28,7 @@ requests.interceptors.response.use(response => {
         router.push({name: 'Login'}).then();
         Message({tipType: 'error', content: '没有操作权限'});
     }
-    if(status !== RESP_CODE.OK_CODE) {
+    if(status !== RESP_CODE.SUCCESS_CODE) {
         Message({tipType: 'error', content: '错误'});
     }
     return Promise.resolve(data);
@@ -40,7 +40,8 @@ interface HttpConfig {
     url: string;
     method: string;
     data?: {[key: string]: any};
-    params?: {[key: string]: any}
+    params?: {[key: string]: any};
+    headers?: {[key: string]: any};
 }
 
 const _http = (config: HttpConfig): Promise<any> => {

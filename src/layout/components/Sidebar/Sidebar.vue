@@ -29,6 +29,7 @@ const handelSelect = (index: string) => {
 .layout-sider {
     width: 200px;
     height: 100%;
+    background-color: @dark-theme;
     .menu {
         height: 100%;
     }

@@ -15,7 +15,7 @@ export default {
     {
       path: "edit",
       name: "categoryEdit",
-      meta: { title: "menu.category_edit", hidden: false },
+      meta: { title: "menu.tag_list", hidden: false },
       component: () => import("@/pages/Category/CategoryEdit.vue"),
     },
   ],

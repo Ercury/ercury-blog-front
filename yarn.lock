@@ -486,10 +486,20 @@
   resolved "https://registry.npmmirror.com/@types/lodash/-/lodash-4.14.191.tgz#09511e7f7cba275acd8b419ddac8da9a6a79e2fa"
   integrity sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==
 
+"@types/marked@^4.0.8":
+  version "4.0.8"
+  resolved "https://registry.npmmirror.com/@types/marked/-/marked-4.0.8.tgz#b316887ab3499d0a8f4c70b7bd8508f92d477955"
+  integrity sha512-HVNzMT5QlWCOdeuBsgXP8EZzKUf0+AXzN+sLmjvaB3ZlLqO+e4u0uXrdw9ub69wBKFs+c6/pA4r9sy6cCDvImw==
+
 "@types/node@^18.0.6":
   version "18.0.6"
   resolved "https://registry.npmmirror.com/@types/node/-/node-18.0.6.tgz#0ba49ac517ad69abe7a1508bc9b3a5483df9d5d7"
   integrity sha512-/xUq6H2aQm261exT6iZTMifUySEt4GR5KX8eYyY+C4MSNPqSh9oNIP7tz2GLKTlFaiBbgZNxffoR3CVRG+cljw==
+
+"@types/spark-md5@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.npmmirror.com/@types/spark-md5/-/spark-md5-3.0.2.tgz#da2e8a778a20335fc4f40b6471c4b0d86b70da55"
+  integrity sha512-82E/lVRaqelV9qmRzzJ1PKTpyrpnT7mwdneKNJB9hUtypZDMggloDfFUCIqRRx3lYRxteCwXSq9c+W71Vf0QnQ==
 
 "@types/web-bluetooth@^0.0.16":
   version "0.0.16"
@@ -575,6 +585,11 @@
   dependencies:
     "@typescript-eslint/types" "5.30.7"
     eslint-visitor-keys "^3.3.0"
+
+"@vavt/md-editor-extension@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.npmmirror.com/@vavt/md-editor-extension/-/md-editor-extension-3.0.0.tgz#23b71c5e46addc312942bc02d2aca8ad0a159942"
+  integrity sha512-ysM/shZo8x5ESPRSK65tqI3UaNE+r/EWlG69TxvNjhE+BnlNeSq2vPw121KCzq09vX0rRnOijN6hiQ3wi9JIMQ==
 
 "@vitejs/plugin-vue@^3.0.1":
   version "3.0.1"
@@ -1051,6 +1066,11 @@ dayjs@^1.10.5, dayjs@^1.11.3:
   version "1.11.7"
   resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.7.tgz#4b296922642f70999544d1144a2c25730fce63e2"
   integrity sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==
+
+de-indent@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmmirror.com/de-indent/-/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
+  integrity sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==
 
 debug@^3.2.6:
   version "3.2.7"
@@ -1624,6 +1644,11 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+he@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmmirror.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
+  integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
+
 header-case@^2.0.4:
   version "2.0.4"
   resolved "https://registry.npmmirror.com/header-case/-/header-case-2.0.4.tgz#5a42e63b55177349cf405beb8d775acabb92c063"
@@ -1860,6 +1885,11 @@ make-dir@^2.1.0:
     pify "^4.0.1"
     semver "^5.6.0"
 
+md-editor-v3@^2.11.2:
+  version "2.11.2"
+  resolved "https://registry.npmmirror.com/md-editor-v3/-/md-editor-v3-2.11.2.tgz#ca2a576d9dac22088781ea9d6282a2cea2173bd3"
+  integrity sha512-aiIG3RZIrf0sv3d+51owh4ESvopoI62b7FVeuoEzq6TD1esvfUyVXBHtNYL1LxUTcGcFAa2wHuJGiBIMFq04kw==
+
 memoize-one@^6.0.0:
   version "6.0.0"
   resolved "https://registry.npmmirror.com/memoize-one/-/memoize-one-6.0.0.tgz#b2591b871ed82948aee4727dc6abceeeac8c1045"
@@ -1916,6 +1946,11 @@ mlly@^0.5.3, mlly@^0.5.5:
   dependencies:
     pathe "^0.3.2"
     pkg-types "^0.3.3"
+
+moment@^2.29.4:
+  version "2.29.4"
+  resolved "https://registry.npmmirror.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
 
 ms@2.1.2:
   version "2.1.2"
@@ -2329,6 +2364,11 @@ sourcemap-codec@^1.4.8:
   resolved "https://registry.npmmirror.com/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
   integrity sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
 
+spark-md5@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.npmmirror.com/spark-md5/-/spark-md5-3.0.2.tgz#7952c4a30784347abcee73268e473b9c0167e3fc"
+  integrity sha512-wcFzz9cDfbuqe0FZzfi2or1sgyIrsDwmPwfZC4hiNidPdPINjeUwNfv5kldczoEAcjl9Y1L3SM7Uz2PUEQzxQw==
+
 strip-ansi@^6.0.1:
   version "6.0.1"
   resolved "https://registry.npmmirror.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
@@ -2603,6 +2643,14 @@ vue-router@^4.1.2:
   integrity sha512-5BP1qXFncVRwgV/XnqzsKApdMjQPqWIpoUBdL1ynz8HyLxIX/UDAx7Ql2BjmA5CXT/p61JfZvkpiFWFpaqcfag==
   dependencies:
     "@vue/devtools-api" "^6.1.4"
+
+vue-template-compiler@^2.7.14:
+  version "2.7.14"
+  resolved "https://registry.npmmirror.com/vue-template-compiler/-/vue-template-compiler-2.7.14.tgz#4545b7dfb88090744c1577ae5ac3f964e61634b1"
+  integrity sha512-zyA5Y3ArvVG0NacJDkkzJuPQDF8RFeRlzV2vLeSnhSpieO6LK2OVbdLPi5MPPs09Ii+gMO8nY4S3iKQxBxDmWQ==
+  dependencies:
+    de-indent "^1.0.2"
+    he "^1.2.0"
 
 vue-types@^3.0.0:
   version "3.0.2"

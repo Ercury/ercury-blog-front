@@ -1,64 +1,60 @@
-import { ElDialog } from "element-plus";
-import { render } from "vue";
+import MyDialog from '../components/BaseDialog.vue';
+import * as vue from "vue";
+// 加载dialog样式
+// import '@/assets/style/dialog.less';
+
+interface ModalOptions {
+    title?: string;
+}
 
 export class ModalService {
-
+    // VNODE
+    public vNode: vue.VNode;
+    // 挂载所需元素
+    public modalElement: Element | ShadowRoot;
     /**
      * 创建一个弹出框
      * @param component 组件
-     * @param opt 配置
+     * @param modalOptions 配置
      */
-    static open(component: any, props: any, modalOptions?: any) {
-        const close = () => {
-            render(null, container)
-            document.body.removeChild(container);
-        }
-
+    public open(component: any, modalOptions?: ModalOptions) {
+        // modal组件默认配置
         const dialogProps = {
-            modelValue: true,
-            title: modalOptions?.title,
+            modalValue: true,
             showClose: true,
-            // appendToBody: true,
-            draggable: modalOptions?.draggable,
             destroyOnClose: false,
             modal: true,
             center: true,
-            alignCenter: modalOptions.alignCenter,
-            onClosed: close,
+            onClosed: this.close,
         }
 
-        const closeHandler = () => {
-            if (vNode.component?.props.modelValue) {
-                vNode.component!.props.modelValue = false
-            }
+        this.vNode = h(MyDialog, dialogProps, {
+            // 向组件传递子元素(传递插槽)
+            default: () => h(component, {
+                onDismiss: () => {
+                    vue.render(null, document.body);
+                },
+                onClose(event: boolean) {
 
-        }
-
-        const container = document.createElement('div')
-        document.body.appendChild(container)
-        var vNode = h(ElDialog, dialogProps, {
-            default: () => {
-                let type = typeof component;
-                if (type == 'string' || type == 'number') {
-                    return h('div', component)
-                } else {
-                    return h(component, {
-                        ...props,
-                        onClose: closeHandler
-                    })
                 }
-            },
-            header: () => {
-                if (dialogProps) {
-                    let type = typeof dialogProps.title
-                    if (type == 'string' || type == 'number') {
-                        return h('span', dialogProps.title)
-                    }
-                    return h(dialogProps.title, null)
-                }
-            }
+            }),
+            header: () => h('span', { style: { fontSize: '20px' } }, modalOptions?.title)
         }
         );
-        render(vNode, container);
+        // 渲染vnode
+        vue.render(this.vNode, document.body);
+    }
+
+    // dialog关闭回调
+    private close(): void {
+        vue.render(null, document.body);
     }
 }
+
+const modalService = new ModalService();
+export const useDialog = () => {
+    return {
+        open: modalService.open.bind(modalService),
+    };
+};
+

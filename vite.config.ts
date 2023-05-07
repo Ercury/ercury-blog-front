@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
 /* 实现vue函数的自动导入 */
 import AutoImport from 'unplugin-auto-import/vite';
-import { AntDesignVueResolver, ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import PurgeIcons from 'vite-plugin-purge-icons';
 import { resolve } from 'path';
 import * as _ from 'lodash';
@@ -22,13 +22,12 @@ export default defineConfig({
       ],
       dts: true,
       imports: ['vue', 'vue-router', 'pinia'],
-      resolvers: [AntDesignVueResolver()]
+      resolvers: [ElementPlusResolver()]
     }),
     Components({
       //ui库解析器,也可以自定义
       resolvers: [
-        AntDesignVueResolver(),
-        ElementPlusResolver(),
+        ElementPlusResolver()
       ]
     }),
     PurgeIcons({
@@ -45,9 +44,9 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         // vitebug 没用
-        // additionalData: '@import "src/assets/style/global.less";'
+        additionalData: '@import "src/assets/style/global.less";'
       },
-      // javascriptEnabled: true
+      javascriptEnabled: true
     }
   },
 

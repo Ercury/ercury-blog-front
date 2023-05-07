@@ -32,28 +32,28 @@ export class FormRules {
         category: [
             {
                 required: true,
-                message: translate('tips.valid_articletitle'),
+                message: '文章分类不能为空',
                 trigger: ['change']
             }
         ],
-        tag: [
+        tags: [
             {
                 required: true,
-                message: translate('tips.valid_articletitle'),
-                trigger: ['change']
-            }
-        ],
-        desc: [
-            {
-                required: true,
-                message: translate('tips.valid_articletitle'),
+                message: '文章标签不能为空',
                 trigger: ['change']
             }
         ],
         cover: [
             {
-                required: true,
-                message: translate('tips.valid_articletitle'),
+                required: false,
+                message: '文章封面不能为空',
+                trigger: ['change']
+            }
+        ],
+        mdFilename: [
+            {
+                required: false,
+                message: '文章不能为空',
                 trigger: ['change']
             }
         ]

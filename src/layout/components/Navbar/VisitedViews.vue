@@ -109,9 +109,7 @@ const closeAll = async () => {
 
 <style lang='less' scoped>
 .visited_views {
-
-    // height: 30px;
-    // background-color: green;
+    color: @general-font-color;
     >div {
         height: 24px;
         margin-top: 10px;
@@ -119,8 +117,8 @@ const closeAll = async () => {
         padding: 0 10px;
         display: inline-block;
         line-height: 24px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
+        border: 1px solid #675894;
+        border-radius: 5px;
         cursor: pointer;
     }
 
@@ -131,6 +129,7 @@ const closeAll = async () => {
         z-index: 9999;
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
         list-style: none;
+        background-color: @dark-theme;
 
         >li {
             padding: 5px 2px;

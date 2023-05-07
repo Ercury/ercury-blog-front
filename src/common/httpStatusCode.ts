@@ -1,4 +1,4 @@
 export enum RESP_CODE {
-    OK_CODE = 200,
+    SUCCESS_CODE = 200,
     NO_PERMISSIONS = 403
 }

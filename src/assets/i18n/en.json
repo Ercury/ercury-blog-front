@@ -6,7 +6,7 @@
         "article_list": "Article List",
         "article_write": "Article Writing",
         "category": "Category",
-        "category_edit": "Category Edit",
+        "tag_list": "Tag List",
         "category_list": "Category Edit",
         "tags_manage": "Tags",
         "error_page": "Abnormal Page",
@@ -35,7 +35,8 @@
         }
     },
     "common": {
-        "submit": "Submit"
+          "submit": "Submit",
+        "cancel": "Cancel"
     },
     "tips": {
         "valid_username_notnull": "Please input your username!",
@@ -43,6 +44,7 @@
         "valid_articletitle": "Please enter the title of the article"
     },
     "button": {
-        "add_article": "New article"
+        "add_article": "New article",
+        "add_category": "New category"
     }
 }
