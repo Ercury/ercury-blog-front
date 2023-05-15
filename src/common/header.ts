@@ -54,6 +54,18 @@ export class TableColumns {
         }
     ]
 
+    // 标签表头
+    public static TAG_COLUMNS = [
+        {
+            title: 'Name',
+            key: 'tagName'
+        },
+        {
+            title: 'ID',
+            key: '_id'
+        }
+    ]
+
     // 操作按钮
     public static OPERATION_BUTTONS = [
         {label: '编辑', key: 'edit', color: '#626aef', status: 0},

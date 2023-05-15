@@ -1,3 +1,12 @@
+
+<template>
+  <div class="main-content">
+    <el-table :data="categorySrcData">
+      <el-table-column v-for="column in categoryColumns" :label="column.title" :prop="column.key" />
+    </el-table>
+  </div>
+</template>
+
 <script lang='ts' setup='setup'>
 import { translate } from '@/assets/i18n';
 import { cloneDeep } from 'lodash';
@@ -29,19 +38,6 @@ function getCategoryList(): void {
     }
   })
 }
-// 新增分类
-const addCategory = (): void => {
-
-}
 </script>
-
-<template>
-  <div class="main-content">
-  <el-button @click="addCategory">{{ translate('button.add_category') }}</el-button>
-  <el-table :data="categorySrcData">
-    <el-table-column v-for="column in categoryColumns" :label="column.title" :prop="column.key" />
-  </el-table>
-</div>
-</template>
 
 <style lang='less' scoped></style>

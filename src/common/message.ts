@@ -1,23 +1,13 @@
-import { message } from 'ant-design-vue';
-import 'ant-design-vue/es/message/style/css';
+import { ElMessage } from 'element-plus';
 const Message =  (config: {tipType: string, content: string}) => {
-    message.destroy();
+    ElMessage.closeAll();
    switch (config.tipType) {
        case 'success':
-           return message.success(config.content);
-           break;
+           return ElMessage.success(config.content);
        case 'error':
-           return message.error(config.content);
-           break;
+           return ElMessage.error(config.content);
        case 'info':
-           return message.info(config.content);
-           break;
-       case 'warn':
-           return message.warn(config.content);
-           break;
-       case 'loading':
-           return message.loading(config.content);
-           break;
+           return ElMessage.info(config.content)
         default:
             break;
     }

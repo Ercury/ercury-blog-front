@@ -7,16 +7,16 @@ export default {
   redirect: "/Category/list",
   children: [
     {
-      path: "list",
+      path: "categoryList",
       name: "categoryList",
       meta: { title: "menu.category_list", hidden: false },
       component: () => import("@/pages/Category/CategoryList.vue"),
     },
     {
-      path: "edit",
-      name: "categoryEdit",
+      path: "tagList",
+      name: "tagList",
       meta: { title: "menu.tag_list", hidden: false },
-      component: () => import("@/pages/Category/CategoryEdit.vue"),
+      component: () => import("@/pages/Category/TagList.vue"),
     },
   ],
 }
