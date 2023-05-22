@@ -2482,6 +2482,11 @@ vite@^3.0.2:
   optionalDependencies:
     fsevents "~2.3.2"
 
+vue-best-verify@^0.0.34:
+  version "0.0.34"
+  resolved "https://registry.npmmirror.com/vue-best-verify/-/vue-best-verify-0.0.34.tgz#70145e6f51eb998661e29c5a99db654372162c1c"
+  integrity sha512-JcCDa1uSs2FyoSFM3MUMTcI/LOJw0m4FcARPEO5mjrVoA8BS3Mvb8sAlPdWDxM5obNoKg0DmfOjOfH7rCCbg3A==
+
 vue-demi@*:
   version "0.13.5"
   resolved "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.13.5.tgz#d5eddbc9eaefb89ce5995269d1fa6b0486312092"

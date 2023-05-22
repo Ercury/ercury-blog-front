@@ -7,7 +7,7 @@
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 // 引入公共库中的预览主题
-import '@vavt/md-editor-extension/dist/previewTheme/krafty.css';
+import '@vavt/md-editor-extension/dist/previewTheme/arknights.css';
 
 // markdown内容
 const markdownContent = ref('');

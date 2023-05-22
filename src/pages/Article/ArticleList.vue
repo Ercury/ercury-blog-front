@@ -1,53 +1,47 @@
 <template>
   <div class="main-content">
-  <el-table :data="tableConfig.srcData.data">
-    <template v-for="(column) in articleColumns" :key="column.key">
-      <el-table-column v-if="column.key === 'tags'" :label="column.title" :prop="column.key">
-        <template #default="{ row }">
-          <div v-if="!row.isEdit" v-for="(item, index) in row.tags.map(tag => tag.tagName)" :key="index"
-            style="margin-top: 3px;">
-            <el-tag>{{ item }}</el-tag>
-          </div>
-          <el-select v-else v-model="row[column.select as string]" multiple>
-            <el-option v-for="item in column.options" :key="item.value" :value="item.value" :label="item.label"/>
-          </el-select>
-        </template>
-      </el-table-column>
-      <el-table-column v-else-if="column.key === 'operation'" v-slot="{ row }">
-        <template v-for="item in !row.isEdit ? operationMenu.slice(0, 2) : operationMenu.slice(2, 4)" :key="item.key">
-          <el-button size="small" round  :color="item.color" :disabled="row.disabled" @click="handleRow(item.key, row)">
-            {{ item.label }}
-          </el-button>
-        </template>
-      </el-table-column>
-      <el-table-column v-else :label="column.title" :prop="column.key">
-        <template #default="{ row }">
-          <template v-if="!row.isEdit">
-            <span v-if="column.key === 'category'">{{ row[column.key].categoryName }}</span>
-            <span v-else-if="column.key === 'status'">{{ ARTICLE_STATUS.get(row[column.key]) }}</span>
-            <span v-else-if="column.key === 'createTime'">{{ moment(row[column.key]).utc().format('YYYY-MM-DD')}}</span>
-            <span v-else>{{ row[column.key] }}</span>
-          </template>
-          <template v-else>
-            <el-select v-if="column.type === 'select'" v-model="row[column.select as string]">
-              <el-option v-for="item in column.options" :key="item.value" :value="item.value" :label="item.label"/>
+    <el-table :data="tableConfig.srcData.data">
+      <template v-for="(column) in articleColumns" :key="column.key">
+        <el-table-column v-if="column.key === 'tags'" :label="column.title" :prop="column.key">
+          <template #default="{ row }">
+            <div v-if="!row.isEdit" v-for="(item, index) in row.tags.map((tag: any) => tag.tagName)" :key="index"
+              style="margin-top: 3px;">
+              <el-tag>{{ item }}</el-tag>
+            </div>
+            <el-select v-else v-model="row[column.select as string]" multiple>
+              <el-option v-for="item in column.options" :key="item.value" :value="item.value" :label="item.label" />
             </el-select>
-            <el-input type="textarea" v-if="column.type === 'text'" v-model="row[column.key]" />
           </template>
-        </template>
-      </el-table-column>
-    </template>
-  </el-table>
-  <el-pagination background v-model:current-page="tableConfig.srcData.currentPage"
-                 v-model:page-size="tableConfig.srcData.pageSize" 
-                 :page-sizes="[10, 20, 50]"
-                  layout="sizes, prev, pager, next" 
-                  :hide-on-single-page="true"
-                  small="small"
-                 :total="tableConfig.srcData.total"
-                 @size-change="handleSizeChange"
-                 @current-change="handleCurrentChange"
-                 class="pagination"/>
+        </el-table-column>
+        <el-table-column v-else-if="column.key === 'operation'" v-slot="{ row }">
+          <template v-for="item in !row.isEdit ? operationMenu.slice(0, 2) : operationMenu.slice(2, 4)" :key="item.key">
+            <el-button size="small" round :color="item.color" :disabled="row.disabled" @click="handleRow(item.key, row)">
+              {{ item.label }}
+            </el-button>
+          </template>
+        </el-table-column>
+        <el-table-column v-else :label="column.title" :prop="column.key">
+          <template #default="{ row }">
+            <template v-if="!row.isEdit">
+              <span v-if="column.key === 'category'">{{ row[column.key].categoryName }}</span>
+              <span v-else-if="column.key === 'status'">{{ ARTICLE_STATUS.get(row[column.key]) }}</span>
+              <span v-else-if="column.key === 'createTime'">{{ moment(row[column.key]).utc().format('YYYY-MM-DD') }}</span>
+              <span v-else>{{ row[column.key] }}</span>
+            </template>
+            <template v-else>
+              <el-select v-if="column.type === 'select'" v-model="row[column.select as string]">
+                <el-option v-for="item in column.options" :key="item.value" :value="item.value" :label="item.label" />
+              </el-select>
+              <el-input type="textarea" v-if="column.type === 'text'" v-model="row[column.key]" />
+            </template>
+          </template>
+        </el-table-column>
+      </template>
+    </el-table>
+    <el-pagination background v-model:current-page="tableConfig.srcData.currentPage"
+      v-model:page-size="tableConfig.srcData.pageSize" :page-sizes="[10, 20, 50]" layout="sizes, prev, pager, next"
+      :hide-on-single-page="true" small="small" :total="tableConfig.srcData.total" @size-change="handleSizeChange"
+      @current-change="handleCurrentChange" class="pagination" />
   </div>
 </template>
 
@@ -63,7 +57,7 @@ import { translate } from "@/assets/i18n/index"
 import { cloneDeep } from 'lodash';
 import { CategoryApi } from '../../service/module/categoryHttp';
 import { TagApi } from '../../service/module/tagHttp';
-import Message from '@/common/message';
+import { message } from '@/common/message';
 import moment from 'moment';
 
 // 实例化文章请求类
@@ -84,7 +78,7 @@ const operationMenu = reactive(TableColumns.OPERATION_BUTTONS);
 const oldRowData: any = markRaw({});
 // 表格配置
 const tableConfig = reactive({
-  srcData:  {
+  srcData: {
     currentPage: 1,
     pageSize: 10,
     total: 0,
@@ -150,12 +144,13 @@ const handleDelete = (row: ArticleListData): void => {
     .then(() => {
       articleApi.deleteArticle(row._id).then(resp => {
         if (resp.error_code === RESP_CODE.SUCCESS_CODE) {
-          Message({ tipType: 'success', content: '删除成功' });
+          ElMessage.success('删除成功')
+          // Message({ type: 'success', message: '删除成功' });
           getArticleList();
         }
       })
     })
-    .catch(() => {})
+    .catch(() => { })
 
 }
 
@@ -225,7 +220,7 @@ function updateArticle(row: ArticleListData): void {
   articleApi.updateArticle(setParams(row)).then(resp => {
     if (resp.error_code === RESP_CODE.SUCCESS_CODE) {
       getArticleList();
-      Message({ tipType: 'success', content: '更新成功' });
+      message.success('更新成功');
     }
   })
 }

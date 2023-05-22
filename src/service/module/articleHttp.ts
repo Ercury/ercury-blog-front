@@ -57,3 +57,5 @@ export class ArticleApi {
     }
     
 }
+
+export const articleApi = new ArticleApi();

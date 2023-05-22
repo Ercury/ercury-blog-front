@@ -51,6 +51,10 @@ export class TableColumns {
         {
             title: 'ID',
             key: '_id'
+        },
+        {
+            title: 'operation',
+            key: 'operation'
         }
     ]
 
@@ -63,6 +67,10 @@ export class TableColumns {
         {
             title: 'ID',
             key: '_id'
+        },
+        {
+            title: 'operation',
+            key: 'operation'
         }
     ]
 

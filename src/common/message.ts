@@ -1,16 +1,27 @@
-import { ElMessage } from 'element-plus';
-const Message =  (config: {tipType: string, content: string}) => {
-    ElMessage.closeAll();
-   switch (config.tipType) {
-       case 'success':
-           return ElMessage.success(config.content);
-       case 'error':
-           return ElMessage.error(config.content);
-       case 'info':
-           return ElMessage.info(config.content)
-        default:
-            break;
+import { MessageHandler } from "element-plus";
+
+class Message {
+
+    private messageInstance: MessageHandler;
+
+    constructor() { }
+
+    public success(content: string) {
+        this.close();
+        this.messageInstance = ElMessage({ message: content, type: 'success' });
+    }
+    public error(content: string) {
+        this.close();
+        this.messageInstance = ElMessage({ message: content, type: 'error' });
+    }
+    public warn(content: string) {
+        this.close();
+        this.messageInstance = ElMessage({ message: content, type: 'warning' });
+    }
+
+    private close(): void {
+        if (this.messageInstance) this.messageInstance.close();
     }
 }
+export const message = new Message();
 
-export default Message;

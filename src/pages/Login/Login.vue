@@ -8,7 +8,7 @@ import { useRouter } from 'vue-router';
 import type { FormInstance } from 'element-plus';
 import { useUserStore } from '@/store/module/useUserStore';
 import { usePermissionStore } from '../../store/module/usePermissionStore';
-import Message from '@/common/message';
+import { message } from '@/common/message';
 import { translate } from '@/assets/i18n';
 const formState: LoginFormField = reactive(new LoginFormField());
 const userRequests = new UserRequests();
@@ -24,7 +24,7 @@ function submitForm(formEl: FormInstance | undefined) {
     formEl.validate((valid) => {
         if (valid) {
             queryLogin(formState);
-        } 
+        }
     })
 }
 
@@ -33,14 +33,14 @@ const queryLogin = (params: LoginFormField): void => {
     userRequests.reqLogin(params).then(async resp => {
         const { data, code } = resp;
         if (code === RESP_CODE.SUCCESS_CODE) {
-            Message({ tipType: 'success', content: '登录成功' });
+            message.success('登录成功');
             userStore.setLogin(Object.assign({}, data, { token: resp.token }));
             await permissionStore.handleRoutes().then(() => {
                 router.push({ name: 'Dashboard' });
             });
         }
     }).catch(err => {
-        Message({ tipType: 'error', content: err.msg });
+        message.error(err.msg);
     })
 }
 </script>
@@ -48,23 +48,23 @@ const queryLogin = (params: LoginFormField): void => {
 <template>
     <div class="background-login">
         <div class="login-form">
-            <el-form :model="formState" name="basic" label-width="120px" @submit.native.prevent class="label-color demo-dynamic"
-                autocomplete="off" ref="formRef" :rules="FormRules.LOGIN_FORM_RULES">
+            <el-form :model="formState" name="basic" label-width="120px" @submit.native.prevent
+                class="label-color demo-dynamic" autocomplete="off" ref="formRef" :rules="FormRules.LOGIN_FORM_RULES">
                 <!-- username -->
                 <el-form-item :label="translate('form.login.user_name')" prop="username">
-                    <el-input type="text" v-model="formState.username"/>
+                    <el-input type="text" v-model="formState.username" />
                 </el-form-item>
                 <!-- password -->
                 <el-form-item :label="translate('form.login.password')" prop="password">
-                    <el-input type="password" v-model="formState.password"/>
+                    <el-input type="password" v-model="formState.password" />
                 </el-form-item>
                 <!-- remember -->
                 <!-- <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
                     <a-checkbox v-model:checked="formState.remember">{{translate('form.login.remember_me')}}</a-checkbox>
                 </a-form-item> -->
                 <el-form-item>
-                    <el-button class="submit-btn" type="primary" native-type="submit"
-                        @click="submitForm(formRef)">{{ translate('common.submit') }}</el-button>
+                    <el-button class="submit-btn" type="primary" native-type="submit" @click="submitForm(formRef)">{{
+                        translate('common.submit') }}</el-button>
                 </el-form-item>
             </el-form>
         </div>

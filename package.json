@@ -4,7 +4,8 @@
   "license": "ISC",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "vite build"
+    "build": "vite build",
+    "remove:node": "rimraf node_modules"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",
@@ -26,6 +27,7 @@
     "typescript": "^4.7.4",
     "vite-plugin-purge-icons": "^0.8.2",
     "vue": "3.2.37",
+    "vue-best-verify": "^0.0.34",
     "vue-i18n": "9.1",
     "vue-router": "^4.1.2",
     "vue-template-compiler": "^2.7.14"

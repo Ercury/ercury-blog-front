@@ -3,7 +3,9 @@
 </script>
 
 <template>
-User
+<div class="main-content">
+  
+</div>
 </template>
 
 <style lang='less' scoped>

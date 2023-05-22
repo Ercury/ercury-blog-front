@@ -13,3 +13,5 @@ export class FileUploadApi {
     })
   }
 }
+
+export const fileUploadApi = new FileUploadApi();

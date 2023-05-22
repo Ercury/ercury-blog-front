@@ -76,3 +76,8 @@ export class CategoryListData {
     categoryName: string;
     _id: string;
 }
+
+export class TagListData {
+    tagName: string;
+    _id: string;
+}
