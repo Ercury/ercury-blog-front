@@ -31,19 +31,19 @@ export const routes: Array<RouteRecordRaw> = [
       path: "/login",
       name: "Login",
       meta: { notNeedAuth: true, hidden: true},
-      component: () => import("@/pages/Login/Login.vue")
+      component: () => import("@/pages/backend/Login/Login.vue")
     },
     {
         path: "/403",
         name: "NotPermission",
-        component: () => import('@/pages/Abnormal/403.vue')
+        component: () => import('@/pages/backend/Abnormal/403.vue')
     },
     // 匹配所有路径  vue2使用*  vue3使用/:pathMatch(.*)或/:catchAll(.*)
     {
       path: "/404",
       name: "NotFund",
       meta: { notNeedAuth: true, hidden: true },
-      component: () => import("@/pages/Abnormal/404.vue"),
+      component: () => import("@/pages/backend/backend/Abnormal/404.vue"),
     }
   ]
 
@@ -64,7 +64,7 @@ export const permissionRoutes: Array<RouteRecordRaw> = [
                     needCache: true,
                     fixd: true
                 },
-                component: () => import('@/pages/Dashboard/Dashboard.vue')
+                component: () => import('@/pages/backend/Dashboard/Dashboard.vue')
             }
         ]
     },

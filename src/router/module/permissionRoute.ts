@@ -10,13 +10,13 @@ export default {
       path: '403',
       name: '403',
       meta: {title: 'menu.403page', needCache: false},
-      component:  () => import('@/pages/Abnormal/403.vue')
+      component:  () => import('@/pages/backend/Abnormal/403.vue')
     },
     {
       path: '404',
       name: '404',
       meta: {title: 'menu.404page', needCache: false},
-      component:  () => import('@/pages/Abnormal/404.vue')
+      component:  () => import('@/pages/backend/Abnormal/404.vue')
     }
   ]
 }

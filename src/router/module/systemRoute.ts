@@ -10,7 +10,7 @@ export default {
       path: 'systemManage',
       name: 'SystemMange',
       meta: {title: 'menu.system_manage', needCache: false},
-      component:  () => import('@/pages/Setting/System-setting.vue')
+      component:  () => import('@/pages/backend/Setting/System-setting.vue')
     }
   ]
 }

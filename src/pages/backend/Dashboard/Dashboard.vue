@@ -1,6 +1,6 @@
 <script lang='ts' setup>
 import { ArticleApi } from '@/service/module/articleHttp';
-import { RESP_CODE } from '../../common/httpStatusCode';
+import { RESP_CODE } from '@/common/httpStatusCode';
 const articleApi = new ArticleApi();
 const content = ref('');
 

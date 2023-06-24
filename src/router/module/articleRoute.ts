@@ -10,13 +10,13 @@ export default {
       path: "list",
       name: "articleList",
       meta: { title: "menu.article_list", hidden: false },
-      component: () => import("@/pages/Article/ArticleList.vue"),
+      component: () => import("@/pages/backend/Article/ArticleList.vue"),
     },
     {
       path: "write",
       name: "articleWrite",
       meta: { title: "menu.article_write", hidden: false },
-      component: () => import("@/pages/Article/ArticleWrite.vue"),
+      component: () => import("@/pages/backend/Article/ArticleWrite.vue"),
     },
   ],
 }

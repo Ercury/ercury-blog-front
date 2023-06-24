@@ -7,7 +7,7 @@ import { RESP_CODE } from "@/common/httpStatusCode";
 import { useRouter } from 'vue-router';
 import type { FormInstance } from 'element-plus';
 import { useUserStore } from '@/store/module/useUserStore';
-import { usePermissionStore } from '../../store/module/usePermissionStore';
+import { usePermissionStore } from '@/store/module/usePermissionStore';
 import { message } from '@/common/message';
 import { translate } from '@/assets/i18n';
 const formState: LoginFormField = reactive(new LoginFormField());
@@ -76,7 +76,7 @@ const queryLogin = (params: LoginFormField): void => {
     position: relative;
     width: 100%;
     height: 100%;
-    background: url(../../assets/images/02.jpg) no-repeat left center / cover;
+    background: url(@/assets/images/02.jpg) no-repeat left center / cover;
 
     .login-form {
         position: absolute;

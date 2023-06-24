@@ -10,7 +10,7 @@ export default {
       path: "list",
       name: "messageList",
       meta: { title: "menu.message_list", hidden: false },
-      component: () => import("@/pages/Message/Message.vue"),
+      component: () => import("@/pages/backend/Message/Message.vue"),
     }
   ],
 }

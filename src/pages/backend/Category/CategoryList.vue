@@ -64,7 +64,9 @@ const state = reactive({
   // 操作按钮
   operationMenu: cloneDeep(TableColumns.OPERATION_BUTTONS),
   // 编辑or新增
-  isEdit: false
+  isEdit: false,
+  // 按钮状态
+  zero: 0
 })
 
 // 表单初始值
@@ -85,7 +87,7 @@ watch(
 
 // 过滤操作按钮
 const currentOperationMenu = computed(() => {
-  return state.operationMenu.filter(operation => operation.status === 0);
+  return state.operationMenu.filter(operation => operation.status === state.zero);
 })
 
 // 新增按钮回调
@@ -126,6 +128,7 @@ const save = (): void => {
 function handleEdit(row: CategoryListData): void {
   state.editTemplateShow = true;
   state.isEdit = true;
+  // deepClone防止表格数据变化
   state.form = JSON.parse(JSON.stringify(row));
 }
 

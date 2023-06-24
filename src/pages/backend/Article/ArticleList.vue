@@ -40,7 +40,7 @@
     </el-table>
     <el-pagination background v-model:current-page="tableConfig.srcData.currentPage"
       v-model:page-size="tableConfig.srcData.pageSize" :page-sizes="[10, 20, 50]" layout="sizes, prev, pager, next"
-      :hide-on-single-page="true" small="small" :total="tableConfig.srcData.total" @size-change="handleSizeChange"
+      :hide-on-single-page="true" :small="true" :total="tableConfig.srcData.total" @size-change="handleSizeChange"
       @current-change="handleCurrentChange" class="pagination" />
   </div>
 </template>
@@ -55,10 +55,11 @@ import { ArticleApi } from '@/service/module/articleHttp';
 import { useDialog } from "@/hooks/useDialog";
 import { translate } from "@/assets/i18n/index"
 import { cloneDeep } from 'lodash';
-import { CategoryApi } from '../../service/module/categoryHttp';
-import { TagApi } from '../../service/module/tagHttp';
+import { CategoryApi } from '@/service/module/categoryHttp';
+import { TagApi } from '@/service/module/tagHttp';
 import { message } from '@/common/message';
 import moment from 'moment';
+import { ElMessageBox } from 'element-plus';
 
 // 实例化文章请求类
 const articleApi = new ArticleApi();

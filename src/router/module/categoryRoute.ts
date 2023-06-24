@@ -10,13 +10,13 @@ export default {
       path: "categoryList",
       name: "categoryList",
       meta: { title: "menu.category_list", hidden: false },
-      component: () => import("@/pages/Category/CategoryList.vue"),
+      component: () => import("@/pages/backend/Category/CategoryList.vue"),
     },
     {
       path: "tagList",
       name: "tagList",
       meta: { title: "menu.tag_list", hidden: false },
-      component: () => import("@/pages/Category/TagList.vue"),
+      component: () => import("@/pages/backend/Category/TagList.vue"),
     },
   ],
 }

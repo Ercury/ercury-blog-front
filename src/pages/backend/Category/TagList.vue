@@ -21,7 +21,7 @@
     </el-table>
     <el-pagination background v-model:current-page="state.tableConfig.currentPage"
       v-model:page-size="state.tableConfig.pageSize" :page-sizes="[10, 20, 50]" layout="sizes, prev, pager, next"
-      :hide-on-single-page="true" small="small" :total="state.tableConfig.total" @size-change="handleSizeChange"
+      :hide-on-single-page="true" :small="true" :total="state.tableConfig.total" @size-change="handleSizeChange"
       @current-change="handleCurrentChange" class="pagination" />
   </div>
   <el-dialog v-model="state.editTemplateShow" :title="state.isEdit ? '添加标签' : '编辑标签'" width="25%">
@@ -46,9 +46,10 @@ import { tagApi } from '@/service/module/tagHttp';
 import { RESP_CODE } from '@/common/httpStatusCode';
 import { TableColumns } from '@/common/header';
 import { cloneDeep } from 'lodash';
-import { TagListData } from '../../common/constant';
+import { TagListData } from '@/common/constant';
 import type { VerifyOptions as Verify } from "vue-best-verify";
-import { message } from '../../common/message';
+import { message } from '@/common/message';
+import { ElMessageBox } from 'element-plus';
 
 const state = reactive({
   verify: {} as Verify,

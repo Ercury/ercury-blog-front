@@ -10,7 +10,7 @@ export default {
       path: "info",
       name: "UserInfo",
       meta: { title: "menu.user_info", hidden: false },
-      component: () => import("@/pages/User/UserInfo.vue")
+      component: () => import("@/pages/backend/User/UserInfo.vue")
     },
   ],
 }
