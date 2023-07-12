@@ -50,7 +50,7 @@
         </div>
       </el-drawer>
     </div>
-    <markdown ref="markdowRef"></markdown>
+    <markdown ref="markdowRef" mode="editor"></markdown>
   </div>
 </template>
 

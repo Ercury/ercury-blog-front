@@ -7,7 +7,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ArticleList: typeof import('./src/components/ArticleList.vue')['default']
     BaseDialog: typeof import('./src/components/BaseDialog.vue')['default']
+    BlogFooter: typeof import('./src/components/BlogFooter.vue')['default']
+    BlogHeader: typeof import('./src/components/BlogHeader.vue')['default']
     Dialog: typeof import('./src/components/Dialog/Dialog.vue')['default']
     EditorMarkdown: typeof import('./src/components/EditorMarkdown.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']

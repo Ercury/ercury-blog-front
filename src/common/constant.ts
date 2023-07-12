@@ -45,8 +45,8 @@ export class GetListField {
 export class ArticleListData {
     _id: string;
     title: string;
-    category: { catagoryName: string, _id: string};
-    tags: Array<{ tagName: string, _id: string}>;
+    category: { catagoryName: string, _id: string };
+    tags: Array<{ tagName: string, _id: string }>;
     markDownContent: String;
     coverUrl: String; // 文章封面url
     createTime: Date; // 文章创建时间
@@ -55,7 +55,7 @@ export class ArticleListData {
     isEdit: Boolean; // 是否编辑状态
     disabled: Boolean; // 是否禁用按钮
     categorySelect: String;
-    tagSelect:  Array<string>;
+    tagSelect: Array<string>;
 
     constructor(article: ArticleListData) {
         this.title = article.title;
@@ -80,4 +80,25 @@ export class CategoryListData {
 export class TagListData {
     tagName: string;
     _id: string;
+}
+
+export class CommonList {
+    public static menuList = [
+        {
+            label: 'Album',
+            key: 'Album'
+        },
+        {
+            label: 'Article',
+            key: 'Post'
+        },
+        {
+            label: 'English Learning',
+            key: 'English'
+        },
+        {
+            label: 'Overview',
+            key: 'OverView'
+        }
+    ]
 }

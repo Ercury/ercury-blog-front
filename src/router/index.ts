@@ -1,14 +1,14 @@
 import { useTagsViewStore } from "@/store/module/useTagsViewStore";
 import { createRouter, createWebHashHistory, RouteLocationNormalized, RouteRecordRaw, _RouteRecordBase } from "vue-router";
 import Layout from "@/layout/index.vue";
-const modules: Record<string, {[key: string]: any}> =import.meta.glob('./module/*.ts', {eager: true});
+const modules: Record<string, { [key: string]: any }> = import.meta.glob('./module/*.ts', { eager: true });
 const allRoutes: Array<RouteRecordRaw> = [];
 
 Object.keys(modules).forEach((key) => {
-    const mod = modules[key].default || {};
-    const modList: Array<RouteRecordRaw>  = Array.isArray(mod) ? [...mod] : [mod];
-    console.log(modList);
-    allRoutes.push(...modList);
+  const mod = modules[key].default || {};
+  const modList: Array<RouteRecordRaw> = Array.isArray(mod) ? [...mod] : [mod];
+  console.log(modList);
+  allRoutes.push(...modList);
 });
 
 /*
@@ -24,63 +24,112 @@ Object.keys(modules).forEach((key) => {
       notNeedAuth:true  该路由是否不需要鉴权(默认 false)
       needCache:true    该路由是否需要缓存(默认 false)
       fixed:true        如果设置为true，该路由会固定在visited-view中(默认 false)
+      keepAlive         是否缓存组件
 */
 // 无需权限的路由
 export const routes: Array<RouteRecordRaw> = [
-    {
-      path: "/login",
-      name: "Login",
-      meta: { notNeedAuth: true, hidden: true},
-      component: () => import("@/pages/backend/Login/Login.vue")
-    },
-    {
-        path: "/403",
-        name: "NotPermission",
-        component: () => import('@/pages/backend/Abnormal/403.vue')
-    },
-    // 匹配所有路径  vue2使用*  vue3使用/:pathMatch(.*)或/:catchAll(.*)
-    {
-      path: "/404",
-      name: "NotFund",
-      meta: { notNeedAuth: true, hidden: true },
-      component: () => import("@/pages/backend/backend/Abnormal/404.vue"),
-    }
-  ]
+  {
+    path: "/blog",
+    redirect: "/home",
+    meta: { keepAlive: false, notNeedAuth: true},
+    component: () => import('@/pages/Default.vue'),
+    children: [
+      {
+        path: "/home",
+        name: "Home",
+        meta: { keepAlive: false, notNeedAuth: true },
+        component: () => import('@/pages/view/Home.vue')
+      },
+      {
+        path: "/album",
+        name: "Album",
+        meta: { keepAlive: false, notNeedAuth: true },
+        component: () => import('@/pages/view/Album.vue'),
+      },
+      {
+        path: "/post",
+        name: "Post",
+        meta: { keepAlive: false, notNeedAuth: true },
+        component: () => import('@/pages/view/Post.vue'),
+      },
+      {
+        path: "/english",
+        name: "English",
+        meta: {keepAlive: false, notNeedAuth: true},
+        component: () => import('@/pages/view/English.vue')
+      },
+      {
+        path: "/overView",
+        name: "OverView",
+        meta: {keepAlive: false, notNeedAuth: true},
+        component: () => import('@/pages/view/OverView.vue')
+      },
+      {
+        path: "/postDetail",
+        name: "PostDetail",
+        meta: {keepAlive: false, notNeedAuth: true},
+        component: () => import('@/pages/view/PostDetail.vue')
+      },
+    ]
+  },
+  {
+    path: "/login",
+    name: "Login",
+    meta: { notNeedAuth: true, hidden: true },
+    component: () => import("@/pages/backend/Login/Login.vue")
+  },
+  {
+    path: "/403",
+    name: "NotPermission",
+    component: () => import('@/pages/backend/Abnormal/403.vue')
+  },
+  // 匹配所有路径  vue2使用*  vue3使用/:pathMatch(.*)或/:catchAll(.*)
+  {
+    path: "/404",
+    name: "NotFund",
+    meta: { notNeedAuth: true, hidden: true },
+    component: () => import("@/pages/backend/backend/Abnormal/404.vue"),
+  },
+  {
+    path: "/",
+    redirect: "/blog"
+  }
+]
 
 // 需要校验权限的路由
 export const permissionRoutes: Array<RouteRecordRaw> = [
-    {
-        path: "/",
-        name: "Root",
-        component: Layout,
-        redirect: "/dashboard",
-        children: [
-            {
-                path: "dashboard",
-                name: "Dashboard",
-                meta: {
-                    title: "menu.dashboard",
-                    icon: "PieChart",
-                    needCache: true,
-                    fixd: true
-                },
-                component: () => import('@/pages/backend/Dashboard/Dashboard.vue')
-            }
-        ]
-    },
-    ...allRoutes,
-    {
-      path: "/:catchAll(.*)",
-      meta: { hedden: true },
-      redirect: "/404"
-    },
+  {
+    path: "/",
+    name: "Root",
+    component: Layout,
+    redirect: "/dashboard",
+    children: [
+      {
+        path: "dashboard",
+        name: "Dashboard",
+        meta: {
+          title: "menu.dashboard",
+          icon: "PieChart",
+          needCache: true,
+          fixd: true
+        },
+        component: () => import('@/pages/backend/Dashboard/Dashboard.vue')
+      }
+    ]
+  },
+  ...allRoutes,
+  {
+    path: "/:catchAll(.*)",
+    meta: { hedden: true },
+    redirect: "/404"
+  },
 ]
 
 
 /* 创建路由 */
 const router = createRouter({
-    history: createWebHashHistory(),
-    routes
+  history: createWebHashHistory(),
+  routes
 })
 
 // 路由前置守卫
@@ -92,7 +141,7 @@ router.beforeEach((to) => {
     如果遇到了意料之外的情况，可能会抛出一个 Error 这会取消导航并且调用 router.onError() 注册过的回调
     也就是用不到next了，但是next还是可以使用
   */
-  // 如果to需要鉴权 首次加载默认寻找路径'/'一下条件成立
+  //如果to需要鉴权 首次加载默认寻找路径'/'一下条件成立
   if (!to.meta.notNeedAuth) {
     // 获取userInfo
     const userInfo = JSON.parse(sessionStorage.getItem('userInfo') as string);

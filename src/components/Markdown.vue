@@ -1,31 +1,49 @@
 
 <template>
-  <md-editor v-model="markdownContent" :previewOnly="props.previewOnly" class="theme" :previewTheme="props.previewTheme" placeholder="请输入内容..." />
+  <md-editor v-if="props.mode === 'editor'" v-model="markdownContent" class="theme" :htmlPreview="true" placeholder="请输入内容..." />
+  <MdPreview v-if="props.mode === 'preview'" editorId="my-editor" v-model="previewContent" theme="dark"
+     previewTheme="vuepress"></MdPreview>
+  <MdCatalog v-if="props.mode === 'catalog'" :scrollElement="scrollElement" class="catalog" editorId="my-editor" />
 </template>
 
+<!--  style="background-color: #181c27 !important;" -->
+
 <script lang='ts' setup>
-import MdEditor from 'md-editor-v3';
+import { MdPreview, MdEditor, MdCatalog } from 'md-editor-v3';
+import 'md-editor-v3/lib/preview.css';
 import 'md-editor-v3/lib/style.css';
 // 引入公共库中的预览主题
-import '@vavt/md-editor-extension/dist/previewTheme/arknights.css';
+// import '@vavt/md-editor-extension/dist/previewTheme/arknights.css';
 
 // markdown内容
 const markdownContent = ref('');
-
+const scrollElement = document.documentElement;
 // 定义自定义事件向父组件传递数据
 // const emits = defineEmits(['change']);
 const props = defineProps({
   markdownContent: {
     type: String,
-    default: ''
+    required: false,
+    default: '',
   },
-  previewOnly: {
-    type: Boolean,
-    default: false
+  previewContent: {
+    type: String,
+    required: false,
+    default: ''
   },
   previewTheme: {
     type: String,
+    required: false,
     default: 'default'
+  },
+  mode: {
+    type: String,
+    required: true,
+    default: 'preview'
+  },
+  previewClass: {
+    type: Object,
+    required: false
   }
 })
 
@@ -42,8 +60,8 @@ defineExpose({ getContent });
 </script>
 
 <style lang="less">
-  .theme {
-    background-color: @dark-theme;
-    color: @general-font-color;
-  }
+.theme {
+  background-color: @dark-theme;
+  color: @general-font-color;
+}
 </style>

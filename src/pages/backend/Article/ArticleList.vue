@@ -59,7 +59,6 @@ import { CategoryApi } from '@/service/module/categoryHttp';
 import { TagApi } from '@/service/module/tagHttp';
 import { message } from '@/common/message';
 import moment from 'moment';
-import { ElMessageBox } from 'element-plus';
 
 // 实例化文章请求类
 const articleApi = new ArticleApi();

@@ -16,7 +16,7 @@ onMounted(()=> {
 </script>
 
 <template>
-<markdown :markdown-content="content" :preview-only="true" preview-theme="krafty"></markdown>
+
 </template>
 
 <style lang='less' scoped>

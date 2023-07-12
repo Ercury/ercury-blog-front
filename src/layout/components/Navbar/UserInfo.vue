@@ -75,8 +75,8 @@ const changeLocale = (check: string | number | boolean): void => {
 }
 
 // 切换主题
-const changeTheme = (check: boolean): void => {
-    state.themeToggle = check
+const changeTheme = (check: string | number | boolean): void => {
+    state.themeToggle = check as boolean;
 }
 
 // 下拉选中回调
