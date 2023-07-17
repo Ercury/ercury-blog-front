@@ -10,6 +10,14 @@ body,
 #app {
     height: 100%;
     width : 100%;
+    /* start-将box-sizing默认改为border-box，如果需要设置为content-box需要手动加box-sizing: content-box; */
+    box-sizing: border-box;
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+    /* end */
 }
 
 li {

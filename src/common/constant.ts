@@ -90,7 +90,7 @@ export class CommonList {
         },
         {
             label: 'Article',
-            key: 'Post'
+            key: 'PostBoard'
         },
         {
             label: 'English Learning',

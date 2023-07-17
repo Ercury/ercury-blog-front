@@ -47,10 +47,10 @@ export const routes: Array<RouteRecordRaw> = [
         component: () => import('@/pages/view/Album.vue'),
       },
       {
-        path: "/post",
-        name: "Post",
+        path: "/postboard",
+        name: "PostBoard",
         meta: { keepAlive: false, notNeedAuth: true },
-        component: () => import('@/pages/view/Post.vue'),
+        component: () => import('@/pages/view/PostBoard.vue'),
       },
       {
         path: "/english",

@@ -1,7 +1,10 @@
 <template>
   <div class="post-detail">
     <div class="preview">
-      <markdown mode="preview" :previewContent="state.postInfo.markDownContent"></markdown>
+      <markdown mode="preview"
+      :previewContent="state.postInfo.markDownContent"
+      previewTheme="default"
+      :showCodeRowNumber="true"/>
     </div>
     <div class="catalog">
       <markdown mode="catalog"></markdown>
@@ -46,14 +49,20 @@ function getPostDetail(): void {
 }
 .preview {
   width: 50%;
+  :deep(.md-editor-previewOnly) {
+    border-radius: 20px;
+    background-color: @view-body-bg-color;
+    color: #a9b7c6 !important;
+  }
 }
 .catalog {
-  width: 15%;
+  width: 13%;
   max-height: 100vh;
-  // position: -webkit-sticky;
   position: fixed;
   right: 8%;
-  // background-color: lightcoral;
-
+  color: #a9b7c6;
+  background-color: #191919;
+  border-radius: 10px;
+  padding: 10px;
 }
 </style>

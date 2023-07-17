@@ -1,9 +1,7 @@
 <template>
-  <div class="blog-bg">
     <div class="blog">
-      <article-list></article-list>
+      <!-- <post-list></post-list> -->
     </div>
-  </div>
 </template>
 
 <script lang='ts' setup>
@@ -11,12 +9,9 @@
 </script>
 
 <style lang='less' scoped>
-.blog-bg {
-  background-color: @view-body-bg-color;
-}
-
 .blog {
-  width: 50%;
+  width: 40%;
+  height: 100vh;
   margin: 0 auto;
 }
 </style>

@@ -55,6 +55,7 @@ declare module '@vue/runtime-core' {
     Markdown: typeof import('./src/components/Markdown.vue')['default']
     MyDialog: typeof import('./src/components/BaseDialog.vue')['default']
     Navbar: typeof import('./src/layout/components/Navbar/Navbar.vue')['default']
+    PostList: typeof import('./src/components/PostList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./src/layout/components/Sidebar/Sidebar.vue')['default']

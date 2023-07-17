@@ -282,7 +282,7 @@ function uploadError(type: string): void {
   align-items: center;
 
   :deep(.el-button) {
-    background-color: @general-button-color;
+    background-color: @color-button-default;
   }
 }
 

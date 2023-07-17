@@ -6,6 +6,8 @@ import * as Icons from '@element-plus/icons-vue';
 import 'element-plus/theme-chalk/dark/css-vars.css'
 //引入iconify文件
 import '@purge-icons/generated';
+// 引入animate.css
+import 'animate.css/animate.min.css';
 // 引入全局样式
 import '@/assets/style/global.less';
 // 加载国际化文件
