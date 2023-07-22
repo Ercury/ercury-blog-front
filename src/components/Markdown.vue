@@ -69,9 +69,9 @@ defineExpose({ getContent });
 
 </script>
 
-<style lang="less">
+<style lang="css">
 .theme {
-  background-color: @dark-theme;
-  color: @general-font-color;
+  background-color: var(--dark-theme);
+  color: var(--general-font-color);
 }
 </style>

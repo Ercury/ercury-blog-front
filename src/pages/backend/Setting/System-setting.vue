@@ -6,6 +6,6 @@
 系统设置
 </template>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 
 </style>

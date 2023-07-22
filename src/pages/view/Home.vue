@@ -8,7 +8,7 @@
 
 </script>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .blog {
   width: 40%;
   height: 100vh;

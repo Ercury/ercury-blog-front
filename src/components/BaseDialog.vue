@@ -11,4 +11,4 @@ defineProps<{
   </el-dialog>
 </template>
 
-<style lang='less' scoped></style>
+<style lang='css' scoped></style>

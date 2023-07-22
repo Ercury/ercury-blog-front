@@ -22,21 +22,24 @@ const collapseChage = () => {
     </div>
 </template>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .header-left {
     display: flex;
     width: 200px;
-    .collapse-btn {
-        cursor: pointer;
-        line-height: 70px;
-        .collapse-btn-size {
-            font-size: 25px;
-        }
-    }
-    .header-logo {
-        width: 134px;
-        background: url(@/assets/images/logo.png) no-repeat scroll top/cover;
-        cursor: pointer;
-    }
+}
+
+.header-left .collapse-btn {
+    cursor: pointer;
+    line-height: 70px;
+}
+
+.header-left .collapse-btn .collapse-btn-size {
+    font-size: 25px;
+}
+
+.header-left .header-logo {
+    width: 134px;
+    background: url(@/assets/images/logo.png) no-repeat scroll top/cover;
+    cursor: pointer;
 }
 </style>

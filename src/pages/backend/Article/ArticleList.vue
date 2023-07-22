@@ -242,7 +242,7 @@ function setParams(row: ArticleListData): any {
 function getCategory(): void {
   categoryApi.getCategoryList({ pageNo: 1, pageSize: 99 }).then(resp => {
     if (resp.error_code === RESP_CODE.SUCCESS_CODE) {
-      resp.categoryList.forEach((category: { categoryName: string, _id: string }) => {
+      resp.dataList.forEach((category: { categoryName: string, _id: string }) => {
         articleCategoryOptions.push({ label: category.categoryName, value: category._id });
       });
     }
@@ -260,7 +260,7 @@ function getTag(): void {
 
 </script>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .pagination {
   margin-top: 10px;
 }

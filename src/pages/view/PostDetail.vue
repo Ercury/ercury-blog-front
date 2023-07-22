@@ -1,10 +1,7 @@
 <template>
   <div class="post-detail">
     <div class="preview">
-      <markdown mode="preview"
-      :previewContent="state.postInfo.markDownContent"
-      previewTheme="default"
-      :showCodeRowNumber="true"/>
+      <markdown mode="preview" :previewContent="state.postInfo.markDownContent" previewTheme="default"/>
     </div>
     <div class="catalog">
       <markdown mode="catalog"></markdown>
@@ -18,6 +15,7 @@ import { useRoute } from 'vue-router';
 import { articleApi } from '../../service/module/articleHttp';
 import { RESP_CODE } from '@/common/httpStatusCode';
 import { ArticleListData } from '@/common/constant';
+
 const route = useRoute();
 
 const state = reactive({
@@ -27,7 +25,7 @@ const state = reactive({
     width: '50%'
   }
 })
-onMounted(()=> {
+onMounted(() => {
   getPostDetail();
 })
 
@@ -41,20 +39,23 @@ function getPostDetail(): void {
 }
 </script>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .post-detail {
   display: flex;
   justify-content: center;
-  background-color: @view-body-bg-color;
+  background-color: var(--view-body-bg-color);
 }
+
 .preview {
   width: 50%;
-  :deep(.md-editor-previewOnly) {
-    border-radius: 20px;
-    background-color: @view-body-bg-color;
-    color: #a9b7c6 !important;
-  }
 }
+
+.preview :deep(.md-editor-previewOnly) {
+  border-radius: 20px;
+  background-color: var(--view-body-bg-color);
+  color: #a9b7c6 !important;
+}
+
 .catalog {
   width: 13%;
   max-height: 100vh;

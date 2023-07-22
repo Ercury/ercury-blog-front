@@ -47,7 +47,7 @@ const goDetail = (id: string): void => {
   router.push({ name: 'PostDetail', query: { id } });
 }
 
-// 文章卡片背景显示
+// 文章卡片hover背景显示
 const showbg = async (id: number, blurLength: number): Promise<void> => {
   // state.bgShow = id
   // 页面渲染完成后再获取元素
@@ -69,7 +69,7 @@ function getLatestPost(): void {
 }
 </script>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .blog-list {
   padding-bottom: 30px;
 }
@@ -78,10 +78,10 @@ function getLatestPost(): void {
   width: 100%;
   min-height: 160px;
   margin-top: 40px;
-  background-color: @view-body-bg-color;
+  background-color: var(--view-body-bg-color);
   padding: 10px;
   border-radius: 16px;
-  box-shadow: 0px 0px 12px @menu-font-color;
+  box-shadow: 0px 0px 12px var(--menu-font-color);
 }
 
 .post-card:first-child {
@@ -104,7 +104,7 @@ function getLatestPost(): void {
 
 .gap-point {
   font-weight: 700;
-  color: @base-link-color;
+  color: var(--base-link-color);
 }
 
 .items-center {
@@ -113,7 +113,7 @@ function getLatestPost(): void {
 }
 
 .reach-detail {
-  color: @base-link-color;
+  color: var(--base-link-color);
 }
 
 .post-title {
@@ -122,7 +122,7 @@ function getLatestPost(): void {
   line-height: 2.25rem;
   font-weight: 700;
   letter-spacing: -.025em;
-  color: @general-font-color;
+  color: var(--general-font-color);
 }
 
 .post-content {
@@ -131,7 +131,7 @@ function getLatestPost(): void {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  color: @general-font-color;
+  color: var(--general-font-color);
 }
 
 .post-entry-bg {

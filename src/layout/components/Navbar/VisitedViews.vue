@@ -25,18 +25,18 @@ const goTargetView = (view: _RouteRecordBase) => {
 const delTargetVisited = (name: RouteRecordName | undefined) => {
     tagsViewStore.deleteVisitedView(name);
     // 如果删除的是当前active路由,跳转到visitedViews的最后一个
-    if(name === route.name && visitedViews.value.length > 1) {
+    if (name === route.name && visitedViews.value.length > 1) {
         router.push({ name: visitedViews.value[visitedViews.value.length - 1].name });
     }
 }
 
 // 当前右键view
 const mouseRightView: Ref<_RouteRecordBase> = ref({
-  name: "",
-  path: "",
-  meta: {
-    fixed: false,
-  },
+    name: "",
+    path: "",
+    meta: {
+        fixed: false,
+    },
 })
 
 // 鼠标右键点击
@@ -92,7 +92,7 @@ const closeAll = async () => {
             <div @click="goTargetView(view)" @contextmenu.prevent="mouseRightClick(view, $event)">
                 {{ translate(view.meta.title) }}
                 <el-icon :style="{ fontSize: '14px' }" @click.stop="delTargetVisited(view.name)">
-                    <Close/>
+                    <Close />
                 </el-icon>
             </div>
         </template>
@@ -107,38 +107,39 @@ const closeAll = async () => {
     </div>
 </template>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .visited_views {
-    color: @general-font-color;
-    >div {
-        height: 24px;
-        margin-top: 10px;
-        margin-right: 5px;
-        padding: 0 10px;
-        display: inline-block;
-        line-height: 24px;
-        border: 1px solid #675894;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+    color: var(--general-font-color);
+}
 
-    .menu {
-        width: 100px;
-        padding: 5px 10px;
-        position: absolute;
-        z-index: 9999;
-        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-        list-style: none;
-        background-color: @dark-theme;
+.visited_views>div {
+    height: 24px;
+    margin-top: 10px;
+    margin-right: 5px;
+    padding: 0 10px;
+    display: inline-block;
+    line-height: 24px;
+    border: 1px solid #675894;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        >li {
-            padding: 5px 2px;
+.visited_views .menu {
+    width: 100px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 9999;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    background-color: var(--dark-theme);
+}
 
-            &:hover {
-                color: #3477f2;
-                cursor: pointer;
-            }
-        }
-    }
+.visited_views .menu>li {
+    padding: 5px 2px;
+}
+
+.visited_views .menu>li:hover {
+    color: #3477f2;
+    cursor: pointer;
 }
 </style>

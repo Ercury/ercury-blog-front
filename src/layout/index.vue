@@ -17,21 +17,24 @@ import Sidebar from "@/layout/components/Sidebar/Sidebar.vue";
     </el-container>
 </template>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .layout {
     width: 100%;
     height: 100%;
-    :deep(.el-header) {
-        width: 100%;
-        height: 70px;
-        background-color: @dark-theme;
-        display: flex;
-        justify-content: space-between;
-        box-shadow: 0px 2px 8px #000000a6 !important;
-        z-index: 2000 !important; // 两个盒子贴一起看不到阴影效果
-    }
-    :deep(.el-main) {
-        background-color: @dark-theme;
-    }
+}
+
+.layout :deep(.el-header) {
+    width: 100%;
+    height: 70px;
+    background-color: var(--dark-theme);
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 2px 8px #000000a6 !important;
+    z-index: 2000 !important;
+    /* 两个盒子贴一起看不到阴影效果 */
+}
+
+:deep(.el-main) {
+    background-color: var(--dark-theme);
 }
 </style>

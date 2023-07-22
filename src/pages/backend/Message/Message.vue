@@ -6,6 +6,6 @@
 
 </script>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 
 </style>

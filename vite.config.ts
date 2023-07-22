@@ -44,7 +44,7 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         // vitebug 没用
-        additionalData: '@import "src/assets/style/global.less";'
+        // additionalData: '@import "src/assets/style/global.less";'
       },
       javascriptEnabled: true
     }

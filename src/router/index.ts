@@ -51,6 +51,7 @@ export const routes: Array<RouteRecordRaw> = [
         name: "PostBoard",
         meta: { keepAlive: false, notNeedAuth: true },
         component: () => import('@/pages/view/PostBoard.vue'),
+        props: route => ({ query: route.query.id })
       },
       {
         path: "/english",
@@ -88,7 +89,7 @@ export const routes: Array<RouteRecordRaw> = [
     path: "/404",
     name: "NotFund",
     meta: { notNeedAuth: true, hidden: true },
-    component: () => import("@/pages/backend/backend/Abnormal/404.vue"),
+    component: () => import("@/pages/backend/Abnormal/404.vue"),
   },
   {
     path: "/",

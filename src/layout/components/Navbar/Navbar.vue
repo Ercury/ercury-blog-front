@@ -13,10 +13,10 @@ import VisitedViews from './VisitedViews.vue';
     <UserInfo></UserInfo>
 </template>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .header-center {
     flex-grow: 1;
     overflow-y: hidden;
-    background-color: @dark-theme;
+    background-color: var(--dark-theme);
 }
 </style>

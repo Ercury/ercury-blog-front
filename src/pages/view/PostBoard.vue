@@ -45,7 +45,7 @@ async function getCategories(): Promise<void> {
 }
 </script>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .animate__animated.animate__bounce {
   --animate-duration: 3s;
 }
@@ -60,11 +60,11 @@ async function getCategories(): Promise<void> {
   left: 10%;
   top: 200px;
   color: #a9b7c6;
-  background-color: var(@view-body-bg-color);
+  background-color: var(--view-body-bg-color);
   border: 1px solid;
-  border-color: var(@color-border-default);
+  border-color: var(--color-border-default);
   border-radius: 12px;
-  box-shadow: 0px 0px 12px @menu-font-color;
+  box-shadow: 0px 0px 12px var(--menu-font-color);
 }
 .left-side-header {
   height: 60px;
@@ -73,9 +73,8 @@ async function getCategories(): Promise<void> {
   font-weight: 700;
   font-size: large;
   line-height: 60px;
-  border-bottom: 1px solid @color-border-default;
+  border-bottom: 1px solid var(--color-border-default);
 }
-.left-side-content {}
 .category-item {
   padding: 16px;
   cursor: pointer;

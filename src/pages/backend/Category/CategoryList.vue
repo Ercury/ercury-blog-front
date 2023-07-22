@@ -173,7 +173,7 @@ function restForm(): void {
 
 </script>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .search-bar {
   display: flex;
   justify-content: space-between;

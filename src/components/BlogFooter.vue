@@ -17,7 +17,7 @@
 
 </script>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .wrap {
   position: relative;
   bottom: 0;
@@ -26,7 +26,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  // background-color: @view-body-bg-color;
+  /* background-color: @view-body-bg-color; */
 }
 
 .inner-wrap {

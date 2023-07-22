@@ -11,7 +11,7 @@ const props = defineProps<{
     </span>
 </template>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .iconify {
     color: inherit;
 }

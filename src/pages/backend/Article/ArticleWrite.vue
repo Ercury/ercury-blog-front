@@ -239,18 +239,18 @@ function uploadError(type: string): void {
 
 </script>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .write-header {
   display: flex;
   justify-content: space-between;
+}
 
-  .title-input :deep(.el-input__wrapper) {
-    width: 70%;
-    height: 50px;
-    background-color: @dark-theme;
-    box-shadow: 0 0 0 0;
-    font-size: 20px;
-  }
+.write-header .title-input :deep(.el-input__wrapper) {
+  width: 70%;
+  height: 50px;
+  background-color: var(--dark-theme);
+  box-shadow: 0 0 0 0;
+  font-size: 20px;
 }
 
 .form-style {
@@ -262,8 +262,7 @@ function uploadError(type: string): void {
   height: 178px;
   display: block;
 }
-
-.el-icon.avatar-uploader-icon {
+.el-icon .avatar-uploader-icon {
   font-size: 28px;
   color: #8c939d;
   width: 178px;
@@ -271,19 +270,17 @@ function uploadError(type: string): void {
   text-align: center;
   border: 1px dashed #8c939d;
 }
-
 .item-width {
   width: 300px;
 }
-
 .btn-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
 
-  :deep(.el-button) {
-    background-color: @color-button-default;
-  }
+.btn-box :deep(.el-button) {
+  background-color: var(--color-button-default);
 }
 
 .upload-md {

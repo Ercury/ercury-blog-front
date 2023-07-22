@@ -28,7 +28,8 @@
         </li>
         <!-- 语言 -->
         <li class="header-right-item">
-            <el-switch v-model="state.languageToggle" inline-prompt active-text="中文" inactive-text="中文" @change='changeLocale' />
+            <el-switch v-model="state.languageToggle" inline-prompt active-text="中文" inactive-text="中文"
+                @change='changeLocale' />
         </li>
         <!-- 主题 -->
         <li class="header-right-item">
@@ -97,57 +98,46 @@ const handleCommand = (command: string | number | object) => {
 </script>
 
 
-<style lang='less' scoped>
+<style lang="css" scoped>
 .header-right {
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 280px;
     height: inherit;
+}
 
-    .header-right-item {}
+.theme-sun :deep(.el-switch__core) .el-switch__action {
+    background-image: url('@/assets/images/sun.svg');
+    background-size: 100% 100%;
+    background-color: #ffff;
+}
 
-    .theme-sun {
-        :deep(.el-switch__core) {
-            .el-switch__action {
-                background-image: url('@/assets/images/sun.svg');
-                background-size: 100% 100%;
-                background-color: #ffff;
-            }
-        }
-    }
+.theme-moon :deep(.el-switch__core) .el-switch__action {
+    background-image: url('@/assets/images/moon.svg');
+    background-size: 100% 100%;
+    background-color: var(--dark-theme);
+}
 
-    .theme-moon {
-        :deep(.el-switch__core) {
-            .el-switch__action {
-                background-image: url('@/assets/images/moon.svg');
-                background-size: 100% 100%;
-                background-color: @dark-theme;
-            }
-        }
-    }
+.btn-bell {
+    position: relative;
+    width: 25px;
+    height: 32px;
+}
 
+.btn-bell-badge {
+    position: absolute;
+    top: 7px;
+    right: 1px;
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background-color: red;
+}
 
-    .btn-bell {
-        position: relative;
-        width: 25px;
-        height: 32px;
-
-        .bell-style {
-            font-size: 25px;
-            position: absolute;
-            top: 4px;
-        }
-
-        .btn-bell-badge {
-            position: absolute;
-            top: 7px;
-            right: 1px;
-            width: 6px;
-            height: 6px;
-            border-radius: 3px;
-            background-color: red;
-        }
-    }
+.bell-style {
+    font-size: 25px;
+    position: absolute;
+    top: 4px;
 }
 </style>

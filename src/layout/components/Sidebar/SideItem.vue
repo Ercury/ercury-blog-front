@@ -43,7 +43,7 @@ const hasOnlyOneChild = (item: Record<string, any>) => {
     </template>
 </template>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .icon {
     width: 25px;
     height: 25px;

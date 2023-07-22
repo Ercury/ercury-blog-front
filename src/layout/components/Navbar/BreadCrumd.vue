@@ -16,7 +16,7 @@ const titleList = computed(() => useRoute().matched)
         </el-breadcrumb>
     </div>
 </template>
-<style lang='less' scoped>
+<style lang='css' scoped>
 .breadcrumd-style {
     width: 100%;
     height: 30%;

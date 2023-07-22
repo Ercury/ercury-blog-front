@@ -9,7 +9,7 @@ import '@purge-icons/generated';
 // 引入animate.css
 import 'animate.css/animate.min.css';
 // 引入全局样式
-import '@/assets/style/global.less';
+import '@/assets/style/default.css';
 // 加载国际化文件
 import i18n from '@/assets/i18n'
 import router from './router';

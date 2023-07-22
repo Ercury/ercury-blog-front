@@ -44,7 +44,7 @@ const mouseLeave = (): void => {
 }
 </script>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .header {
   display: flex;
   justify-content: space-around;
@@ -63,9 +63,9 @@ const mouseLeave = (): void => {
   font-family: 'Yapi SC Hanzipen SC';
   font-size: 30px;
   line-height: 50px;
-  color: @menu-font-color;
+  color: var(--menu-font-color);
   cursor: pointer;
-  text-shadow: 1px 1px 3px @menu-font-color;
+  text-shadow: 1px 1px 3px var(--menu-font-color);
 }
 
 .menu {
@@ -80,7 +80,7 @@ const mouseLeave = (): void => {
 .menu-list-item {
   position: relative;
   margin-right: 8%;
-  color: @menu-font-color;
+  color: var(--menu-font-color);
   font-weight: 700;
   cursor: pointer;
 }

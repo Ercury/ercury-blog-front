@@ -71,24 +71,24 @@ const queryLogin = (params: LoginFormField): void => {
     </div>
 </template>
 
-<style lang='less' scoped>
+<style lang='css' scoped>
 .background-login {
     position: relative;
     width: 100%;
     height: 100%;
     background: url(@/assets/images/02.jpg) no-repeat left center / cover;
+}
 
-    .login-form {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 400px;
+.background-login .login-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
 
-        .submit-btn {
-            margin-left: 100px;
-        }
 
-    }
+}
+.background-login .login-form .submit-btn {
+    margin-left: 100px;
 }
 </style>
