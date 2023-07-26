@@ -63,3 +63,13 @@ export function fileToUrl(file: File): Promise<any> {
     reader.onload = e => resolve(e.target?.result);
   })
 }
+
+
+/**
+ * <p> 获取加载图片地址 </p>
+ * examples: bg/bg.png
+ * @param imgPath: string
+ */
+export const requireImg = (imgPath: string) => {
+  return new URL(imgPath, import.meta.url).href;
+}

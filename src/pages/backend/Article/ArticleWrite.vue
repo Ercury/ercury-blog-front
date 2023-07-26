@@ -90,7 +90,6 @@ const state = reactive({
 const articleState = reactive({
   title: '', // 文章标题
   markDownContent: '', // 文章内容
-  description: '', // 文章摘要
   category: '', // 文章分类
   tags: [], // 文章标签
   coverUrl: '', // 文章封面url
@@ -128,8 +127,6 @@ const confirm = (): void => {
   if (!state.mdToString) articleState.markDownContent = markdowRef.value.getContent();
   // 发布校验
   if (verify(articleState)) {
-    // 截取文章前50个字符作为默认文章摘要
-    articleState.description = articleState.markDownContent.slice(0, 50);
     articleApi.addArticle(toRaw(articleState)).then(resp => {
       if (resp.error_code === RESP_CODE.SUCCESS_CODE) {
         message.success('新增成功');
@@ -172,7 +169,7 @@ function verify(data: any): any {
 function getCategory(): void {
   categoryApi.getCategoryList({ pageNo: 1, pageSize: 99 }).then(resp => {
     if (resp.error_code === RESP_CODE.SUCCESS_CODE) {
-      resp.categoryList.forEach((category: { categoryName: string, _id: string }) => {
+      resp.dataList.forEach((category: { categoryName: string, _id: string }) => {
         state.articleCategoryOptions.push({ label: category.categoryName, value: category._id });
       });
     }
@@ -190,7 +187,6 @@ function getTag(): void {
 
 
 /**
- * @description: md转换 + cover上传
  * @param {*} options
  * @return {*}
  */

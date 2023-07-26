@@ -1,7 +1,7 @@
 <template>
   <div class="post-detail">
-    <div class="preview">
-      <markdown mode="preview" :previewContent="state.postInfo.markDownContent" previewTheme="default"/>
+    <div class="content">
+      <markdown mode="preview" :previewContent="state.postInfo.markDownContent" previewTheme="default" />
     </div>
     <div class="catalog">
       <markdown mode="catalog"></markdown>
@@ -12,18 +12,14 @@
 <script lang='ts' setup>
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { articleApi } from '../../service/module/articleHttp';
+import { articleApi } from '@/service/module/articleHttp';
 import { RESP_CODE } from '@/common/httpStatusCode';
 import { ArticleListData } from '@/common/constant';
 
 const route = useRoute();
 
 const state = reactive({
-  postInfo: <any>{},
-  previewClass: {
-    background: 'lightblue',
-    width: '50%'
-  }
+  postInfo: {} as ArticleListData
 })
 onMounted(() => {
   getPostDetail();
@@ -41,16 +37,14 @@ function getPostDetail(): void {
 
 <style lang='css' scoped>
 .post-detail {
-  display: flex;
+  display: grid;
+  grid-template-columns: 50%;
+  /* column-gap: 8%; */
   justify-content: center;
   background-color: var(--view-body-bg-color);
 }
 
-.preview {
-  width: 50%;
-}
-
-.preview :deep(.md-editor-previewOnly) {
+.content :deep(.md-editor-previewOnly) {
   border-radius: 20px;
   background-color: var(--view-body-bg-color);
   color: #a9b7c6 !important;
@@ -58,12 +52,19 @@ function getPostDetail(): void {
 
 .catalog {
   width: 13%;
-  max-height: 100vh;
+  height: 80%;
+  overflow: scroll;
   position: fixed;
   right: 8%;
+  bottom: 100px;
   color: #a9b7c6;
   background-color: #191919;
   border-radius: 10px;
   padding: 10px;
+}
+
+/* 隐藏滚动条 */
+.catalog::-webkit-scrollbar {
+  width: 0 !important
 }
 </style>

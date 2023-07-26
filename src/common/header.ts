@@ -21,11 +21,6 @@ export class TableColumns {
             select: 'tagSelect'
         },
         {
-            title: 'Description',
-            key: 'description',
-            type: 'text'
-        },
-        {
             title: 'Status',
             key: 'status',
             type: 'select',

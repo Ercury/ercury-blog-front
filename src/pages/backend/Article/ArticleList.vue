@@ -230,7 +230,6 @@ function setParams(row: ArticleListData): any {
   return {
     category: row.categorySelect,
     tags: row.tagSelect,
-    description: row.description,
     status: row.status,
     title: row.title,
     _id: row._id

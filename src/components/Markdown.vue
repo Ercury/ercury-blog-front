@@ -1,18 +1,8 @@
 <template>
-  <md-editor v-if="props.mode === 'editor'"
-             v-model="markdownContent"
-             class="theme"
-             :htmlPreview="true"
-            placeholder="请输入内容..." />
-  <MdPreview v-if="props.mode === 'preview'"
-            editorId="my-editor"
-            v-model="previewContent"
-            :previewTheme="props.previewTheme"
-            :theme="props.theme"/>
-  <MdCatalog v-if="props.mode === 'catalog'"
-            :scrollElement="scrollElement"
-            class="catalog"
-            editorId="my-editor" />
+  <md-editor v-if="props.mode === 'editor'" v-model="markdownContent" class="theme" placeholder="请输入内容..." />
+  <MdPreview v-if="props.mode === 'preview'" editorId="my-editor" v-model="previewContent"
+    :previewTheme="props.previewTheme" :theme="props.theme" />
+  <MdCatalog v-if="props.mode === 'catalog'" :scrollElement="scrollElement" class="catalog" editorId="my-editor" />
 </template>
 
 <!--  style="background-color: #181c27 !important;" -->

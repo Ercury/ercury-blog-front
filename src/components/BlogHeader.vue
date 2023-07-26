@@ -60,6 +60,7 @@ const mouseLeave = (): void => {
 .blog-title {
   width: 15%;
   height: inherit;
+  margin-right: 12%;
   font-family: 'Yapi SC Hanzipen SC';
   font-size: 30px;
   line-height: 50px;

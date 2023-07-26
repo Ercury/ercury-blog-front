@@ -8,7 +8,6 @@ export class LoginFormField {
 export class AddArticleField {
     title: String; // 文章标题
     markDownContent: String; // 文章内容
-    description: String; // 文章摘要
     category: String; // 文章分类
     tags: Array<any>; // 文章标签
     coverUrl: String; // 文章封面url
@@ -47,19 +46,17 @@ export class ArticleListData {
     title: string;
     category: { catagoryName: string, _id: string };
     tags: Array<{ tagName: string, _id: string }>;
-    markDownContent: String;
-    coverUrl: String; // 文章封面url
+    markDownContent: string;
+    coverUrl: string; // 文章封面url
     createTime: Date; // 文章创建时间
     status: Number; // 文章状态
-    description: String; // 文章摘要
     isEdit: Boolean; // 是否编辑状态
     disabled: Boolean; // 是否禁用按钮
-    categorySelect: String;
+    categorySelect: string;
     tagSelect: Array<string>;
 
     constructor(article: ArticleListData) {
         this.title = article.title;
-        this.description = article.description;
         this.status = article.status;
         this.createTime = article.createTime;
         this._id = article._id;

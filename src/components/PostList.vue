@@ -1,20 +1,23 @@
 <template>
   <ul class="blog-list" v-if="state.latestPosts.length > 0">
-    <li ref="card" class="post-card animate__animated animate__bounceInDown" v-for="(post, index) in state.latestPosts" :key="post._id">
+    <li ref="card" class="post-card animate__animated animate__bounceInDown" v-for="(post, index) in  state.latestPosts "
+      :key="post._id">
       <!-- <div v-show="state.bgShow === post._id" class="post-entry-bg"></div> -->
-      <div class="relative" @click="goDetail(post._id)" @mouseenter="showbg(index, 20)" @mouseleave="showbg(index, 12)">
-        <div class="items-center gap-2">
-          <time>{{ post.createTime }}</time>
-          <span class="gap-point">·</span>
-          <span>Ercury</span>
+      <div class="grid-box" @click="goDetail(post._id)" @mouseenter="showbg(index, 20)" @mouseleave="showbg(index, 12)">
+        <div class="grid-left">
+          <div class="item-time">
+            <time>{{ moment(post.createTime).utc().format('YYYY-MM-DD') }}</time>
+            <span class="gap-point">·</span>
+            <span>Ercury</span>
+          </div>
+          <div class="item-title">{{ post.title }}</div>
+          <div class="item-link">
+            <span class="reach-detail">Learn more</span>
+            <img src="../assets/images/right-fill.svg">
+          </div>
         </div>
-        <h3 class="post-title">{{ post.title }}</h3>
-        <div class="post-content">
-          <p>{{ post.markDownContent }}</p>
-        </div>
-        <div class="items-center">
-          <span class="reach-detail">Learn more</span>
-          <img src="../assets/images/right-fill.svg">
+        <div class="grid-right">
+          <img :src="post.coverUrl ? post.coverUrl : state.defaultImg">
         </div>
       </div>
     </li>
@@ -25,6 +28,7 @@
 import { ArticleListData } from '@/common/constant'
 import { RESP_CODE } from '@/common/httpStatusCode'
 import { articleApi } from '@/service/module/articleHttp'
+import moment from 'moment'
 
 const router = useRouter();
 
@@ -34,7 +38,9 @@ const card = ref();
 const state = reactive({
   // 最新文章列表
   latestPosts: [] as ArticleListData[],
-  bgShow: 0
+  bgShow: 0,
+  // 默认图
+  defaultImg: 'src/assets/images/dungeon.jpg'
 })
 
 onMounted(() => {
@@ -52,7 +58,7 @@ const showbg = async (id: number, blurLength: number): Promise<void> => {
   // state.bgShow = id
   // 页面渲染完成后再获取元素
   await nextTick()
-  card.value.find((li: Element, index: number) => index === id ).style.boxShadow = `0px 0px ${blurLength}px #fff`
+  card.value.find((li: Element, index: number) => index === id).style.boxShadow = `0px 0px ${blurLength}px #fff`
 }
 
 // 获取最新文章列表
@@ -73,10 +79,11 @@ function getLatestPost(): void {
 .blog-list {
   padding-bottom: 30px;
 }
+
 .post-card {
   position: relative;
-  width: 100%;
-  min-height: 160px;
+  width: 90%;
+  min-height: 200px;
   margin-top: 40px;
   background-color: var(--view-body-bg-color);
   padding: 10px;
@@ -88,41 +95,61 @@ function getLatestPost(): void {
   margin-top: 0;
 }
 
-.relative {
-  position: relative;
-  z-index: 1;
+.grid-box {
+  /* width: 100%; */
+  height: 200px;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 100%;
   cursor: pointer;
 }
 
-.gap-2 {
+.grid-left {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  /* grid-auto-flow: row; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+}
+
+.grid-right {
+  height: 100%;
+}
+
+.grid-right img {
+  width: 100%;
+  height: 100%;
+}
+
+.item-time {
   display: flex;
-  align-items: center;
+  align-items: start;
   gap: 2%;
   tab-size: 4;
   color: #94A3B8;
 }
-
-.gap-point {
-  font-weight: 700;
-  color: var(--base-link-color);
-}
-
-.items-center {
+.item-title {
   display: flex;
-  gap: 1%;
-}
-
-.reach-detail {
-  color: var(--base-link-color);
-}
-
-.post-title {
-  padding-top: 1rem;
+  align-items: center;
   font-size: 1.875rem;
   line-height: 2.25rem;
   font-weight: 700;
   letter-spacing: -.025em;
   color: var(--general-font-color);
+}
+.item-link {
+  display: flex;
+  align-items: end;
+}
+.gap-point {
+  font-weight: 700;
+  color: var(--base-link-color);
+}
+
+.reach-detail {
+  color: var(--base-link-color);
 }
 
 .post-content {
